@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {assets} from '../assets/assets.js';
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
 
@@ -9,10 +10,10 @@ export default function Navbar() {
     <nav className="bg-white flex justify-between px-4 py-1 shadow-md items-center">
       <img src={assets.logo} alt="logo" className="w-36" />
       <div className="hidden sm:flex space-x-4  text-sm sm:text-base">
-        <a href="/Home" className="hover:text-blue-600 underline">Home</a>
-        <a href="/Collection" className="hover:text-blue-600 underline">Collection</a>
-        <a href="/Contact" className="hover:text-blue-600 underline">Contact</a>
-        <a href="/About" className="hover:text-blue-600 underline">About</a>
+        <NavLink to="/Home" className="hover:text-blue-600">Home</NavLink>
+        <NavLink to="/Collection" className="hover:text-blue-600">Collection</NavLink>
+        <NavLink to="/Contact" className="hover:text-blue-600">Contact</NavLink>
+        <NavLink to="/About" className="hover:text-blue-600">About</NavLink>
       </div>
       <div className="flex items-center gap-6">
           <img src={assets.search_icon} alt="search" className="w-5 cursor-pointer" />
@@ -41,6 +42,10 @@ export default function Navbar() {
               <img src={assets.dropdown_icon} alt="logo" className="h-4 rotate-180" />
               <p>Back</p>
             </div>
+            <NavLink onClick={() => {setVisible(false)}} to="/Home" className="py-2 pl-6 border">Home</NavLink>
+            <NavLink onClick={() => {setVisible(false)}} to="/Collection" className="py-2 pl-6 border">Collection</NavLink>
+            <NavLink onClick={() => {setVisible(false)}} to="/Contact" className="py-2 pl-6 border">Contact</NavLink>
+            <NavLink onClick={() => {setVisible(false)}} to="/About" className="py-2 pl-6 border">About</NavLink>
           </div>
         </div>
 
