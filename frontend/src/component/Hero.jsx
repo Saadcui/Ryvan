@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {assets} from '../assets/assets.js';
 function Hero() {
   return (
     
@@ -19,7 +19,8 @@ function Hero() {
           </div>
        </div>
      </div>
-    
+    {/* hero Right Section */}
+    <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
     </div>
   )
 }
