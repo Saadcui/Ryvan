@@ -11,7 +11,7 @@ export default function Navbar() {
       <img src={assets.logo} alt="logo" className="w-36" />
       <div className="hidden sm:flex space-x-4  text-sm sm:text-base">
         <NavLink to="/Home" className="hover:text-blue-600">Home</NavLink>
-        <NavLink to="/Collection" className="hover:text-blue-600">Collection</NavLink>
+        <NavLink to="/SignUp" className="hover:text-blue-600">SignUp</NavLink>
         <NavLink to="/Contact" className="hover:text-blue-600">Contact</NavLink>
         <NavLink to="/About" className="hover:text-blue-600">About</NavLink>
       </div>
@@ -43,7 +43,7 @@ export default function Navbar() {
               <p>Back</p>
             </div>
             <NavLink onClick={() => {setVisible(false)}} to="/Home" className="py-2 pl-6 border">Home</NavLink>
-            <NavLink onClick={() => {setVisible(false)}} to="/Collection" className="py-2 pl-6 border">Collection</NavLink>
+            <NavLink onClick={() => {setVisible(false)}} to="/SignUp" className="py-2 pl-6 border">SignUp</NavLink>
             <NavLink onClick={() => {setVisible(false)}} to="/Contact" className="py-2 pl-6 border">Contact</NavLink>
             <NavLink onClick={() => {setVisible(false)}} to="/About" className="py-2 pl-6 border">About</NavLink>
           </div>
