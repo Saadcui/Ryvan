@@ -11,15 +11,16 @@ import Contact from './page/Contact';
 import SignUp from './page/SignUp';
 import Login from './page/Login';
 import Navbar from './component/Navbar';
+import { AuthProvider } from './context/AuthContext';
             
 const App = () => {
   return (
     <div>
-    
+    <AuthProvider>
     <Navbar/>
 
     <Routes>
-      <Route path='/Home' element={<Home/>} />
+      <Route path='/home' element={<Home/>} />
       <Route path='/' element={<Home/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/collection' element={<Collection/>} />
@@ -31,6 +32,7 @@ const App = () => {
       <Route path='/placeorder' element={<PlaceOrder/>}  />
       <Route path='/login' element={<Login/>} />
     </Routes>
+    </AuthProvider>
     </div>
   )
 }
