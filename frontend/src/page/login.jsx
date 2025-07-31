@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useRef  } from "react";
 import { useAuth } from '../context/AuthContext';
-import {useHistory} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
@@ -10,7 +10,7 @@ let mailRef = useRef();
 let passwordRef =useRef();
 const { login } = useAuth();
 const [Error,setError]=useState('')
-const history = useHistory();
+const navigate = useNavigate();
 
 const[Loading,setLoading]=useState(false)
 
@@ -23,7 +23,7 @@ async function handleSubmit(e){
   setError('')
   setLoading(true)
   await login(mailRef.current.value, passwordRef.current.value) 
-  history.push('/'); // Redirect to home page after login 
+  navigate('/');
 }catch(err){
   setError(err.message);
 }
