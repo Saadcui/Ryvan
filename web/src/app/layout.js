@@ -1,7 +1,10 @@
 // app/layout.js
 import './globals.css';
-import { AuthProvider } from '../context/AuthContext';
+
 import Navbar from '../component/Navbar';
+import Footer from '../component/Footer';
+import { CartProvider } from '../context/CartContext';
+import { AuthProvider } from '../context/AuthContext';
 
 export const metadata = {
   title: 'Your E-commerce Site',
@@ -13,8 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AuthProvider>
-          <Navbar />
-          {children}
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>
