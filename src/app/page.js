@@ -12,7 +12,7 @@ export default function Home() {
             <RecentBanner />
 
             {/* BRAND MANIFESTO & VALUES */}
-            <section className="relative max-w-7xl mx-auto px-6 py-24 overflow-hidden">
+            <section id="vision" className="relative max-w-7xl mx-auto px-6 py-24 overflow-hidden">
                 
                 {/* Background Glow */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] -z-10" />

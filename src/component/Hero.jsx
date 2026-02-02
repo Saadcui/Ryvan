@@ -54,7 +54,7 @@ function Hero() {
           {/* Using a high-quality placeholder that fits the dark/tech aesthetic */}
           <Image 
             className="object-cover object-center group-hover:scale-105 transition-transform duration-700" 
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" 
+            src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" 
             alt="High performance streetwear" 
             fill
             priority

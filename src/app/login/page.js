@@ -22,10 +22,8 @@ export default function Login() {
       setLoading(true);
       
       const email = mailRef.current.value;
-      const name = email.split('@')[0];
-      const isAdmin = email === 'admin@site.com';
-      
-      await login({ name, email, isAdmin });
+      const password = passwordRef.current.value;
+      await login(email, password);
       router.push('/'); 
     } catch (err) {
       setError(err.message || 'Failed to login');
@@ -58,9 +56,6 @@ export default function Login() {
             </p>
           </div>
 
-          <div className='mt-6 md:mt-10'>
-            <p className='text-sm text-gray-400'>www.acceleratebrand.com</p>
-          </div>
         </div>
 
         {/* CENTER DIVIDER LINE */}
@@ -103,7 +98,7 @@ export default function Login() {
           </form>
 
           <div className='text-center mt-6 text-gray-400 text-xs'>
-            Don't have an account? <Link href="/signup" className='text-white underline hover:text-gray-200'>Sign Up Here</Link>
+            Dont have an account? <Link href="/signup" className='text-white underline hover:text-gray-200'>Sign Up Here</Link>
           </div>
 
         </div>

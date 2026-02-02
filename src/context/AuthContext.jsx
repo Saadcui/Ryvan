@@ -16,19 +16,50 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const login = (userObj) => {
-    const stored = { ...userObj };
-    localStorage.setItem("user", JSON.stringify(stored));
-    setUser(stored);
-  };
+  async function login(email, password) {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
 
-  const logout = () => {
-    localStorage.removeItem("user");
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Login failed');
+
+    const userObj = data.user;
+    const stored = { ...userObj, isAdmin: userObj.role === 'admin' };
+    localStorage.setItem('user', JSON.stringify(stored));
+    setUser(stored);
+    return stored;
+  }
+
+  async function register(name, email, password) {
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Registration failed');
+
+    const userObj = data.user;
+    const stored = { ...userObj, isAdmin: userObj.role === 'admin' };
+    localStorage.setItem('user', JSON.stringify(stored));
+    setUser(stored);
+    return stored;
+  }
+
+  const logout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (e) {}
+    localStorage.removeItem('user');
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

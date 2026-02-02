@@ -7,7 +7,7 @@ import { CartProvider } from '../context/CartContext';
 import { AuthProvider } from '../context/AuthContext';
 
 export const metadata = {
-  title: 'Your E-commerce Site',
+  title: 'Accelerate E-commerce Site',
   description: 'Shop the best products',
 };
 

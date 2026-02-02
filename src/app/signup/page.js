@@ -10,7 +10,7 @@ export default function SignUp() {
   const confirmPasswordRef = useRef();
   
   const router = useRouter();
-  const { login } = useAuth();
+  const { register } = useAuth();
   
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,9 +27,7 @@ export default function SignUp() {
       setLoading(true);
       const email = mailRef.current.value;
       const name = nameRef.current.value || email.split('@')[0];
-      const isAdmin = email === 'admin@site.com'; 
-      
-      await login({ name, email, isAdmin });
+      await register(name, email, passwordRef.current.value);
       router.push('/'); 
     } catch (err) {
       setError(err.message);

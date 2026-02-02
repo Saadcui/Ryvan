@@ -5,7 +5,8 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
 try{
     await db();
-    const { id } = params;
+    const resolvedParams = await params; 
+        const id = resolvedParams.id;
     const product = await Product.findById(id);
     if (!product) {
         return NextResponse.json({ error: 'Product not found' }, { status: 404 });

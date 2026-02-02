@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation'; // Add this import
+import { useCart } from '@/context/CartContext'; // Add this import
 
 export default function CollectionPage() {
   const [products, setProducts] = useState([]);
@@ -110,7 +112,12 @@ export default function CollectionPage() {
 }
 
 // --- PRODUCT CARD COMPONENT (Glass Style) ---
+// --- UPDATED PRODUCT CARD COMPONENT ---
+
 function ProductCard({ product }) {
+  const router = useRouter();
+const { addToCart } = useCart();
+  
   const totalStock = product.sizes?.reduce((acc, curr) => acc + curr.stock, 0) || 0;
   const isSoldOut = totalStock === 0;
   const [selectedSize, setSelectedSize] = useState('');
@@ -121,7 +128,22 @@ function ProductCard({ product }) {
   const handleAddToCart = () => {
     if (!selectedSize) return alert('Please select a size');
     if (!isSizeAvailable) return alert('Size out of stock');
-    alert(`Added ${product.name} (Size: ${selectedSize}) to cart!`);
+
+    // 1. Structure the item to match what CartPage expects
+    const itemToAdd = {
+      id: product._id,
+      title: product.name,
+      price: product.price,
+      image: product.images?.[0]?.url,
+      size: selectedSize,
+      qty: 1
+    };
+
+    // 2. Add to global context state
+    addToCart(itemToAdd);
+
+    // 3. Directly navigate to cart
+    router.push('/cart');
   };
 
   return (
@@ -204,7 +226,7 @@ function ProductCard({ product }) {
                     : 'bg-red-900/20 text-red-500 border border-red-500/20 cursor-not-allowed'}
             `}
           >
-            {isSoldOut ? 'Sold Out' : !selectedSize ? 'Select Size' : 'Add to Cart'}
+            {isSoldOut ? 'Sold Out' : !selectedSize ? 'Select Size' : 'Buy Now'}
           </button>
         </div>
       </div>

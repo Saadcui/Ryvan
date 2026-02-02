@@ -36,7 +36,7 @@ export default function Navbar() {
           <Link href="/" className={linkStyle}>Home</Link>
           <Link href="/collection" className={linkStyle}>Collections</Link>
           <Link href="/#footer" className={linkStyle}>Contact</Link>
-          <Link href="/#about" className={linkStyle}>About</Link>
+          <Link href="/#vision" className={linkStyle}>About</Link>
         </div>
 
         {/* ACTIONS SECTION */}
@@ -57,7 +57,6 @@ export default function Navbar() {
               {/* DROPDOWN */}
               <div className="hidden group-hover:block absolute right-0 top-full pt-3">
                 <div className="w-48 rounded-2xl bg-black/90 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden py-2">
-                  <Link href="/account" className="block px-5 py-2 text-[10px] font-bold uppercase text-gray-400 hover:text-white hover:bg-white/5">My Profile</Link>
                   <Link href="/orders" className="block px-5 py-2 text-[10px] font-bold uppercase text-gray-400 hover:text-white hover:bg-white/5">Orders</Link>
                   {user?.isAdmin && (
                     <Link href="/admin" className="block px-5 py-2 text-[10px] font-bold uppercase text-emerald-400 hover:bg-white/5">Admin Panel</Link>
@@ -112,7 +111,6 @@ export default function Navbar() {
             
             {user ? (
               <>
-                <Link href="/orders" onClick={() => setVisible(false)} className="text-sm font-black uppercase not-italic text-gray-400">Orders</Link>
                 <button onClick={() => {logout(); setVisible(false)}} className="text-left text-sm font-black uppercase not-italic text-red-500">Logout</button>
               </>
             ) : (
