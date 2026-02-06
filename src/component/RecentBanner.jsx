@@ -36,8 +36,8 @@ export default function RecentBanner() {
 
       <div className="flex items-end justify-between mb-8">
         <div>
-          <h2 className="text-3xl font-black italic uppercase tracking-tighter text-white">
-            Latest <span className="text-gray-500 not-italic">Drops</span>
+          <h2 className="text-3xl font-black italic uppercase tracking-tighter text-black dark:text-white">
+            Latest <span className="text-gray-600 dark:text-gray-400 not-italic">Drops</span>
           </h2>
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
             Fresh from the laboratory
@@ -48,13 +48,13 @@ export default function RecentBanner() {
         <div className="flex gap-3">
           <button 
             onClick={() => scroll(-1)} 
-            className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-white hover:bg-white hover:text-black transition-all active:scale-90 shadow-xl"
+            className="w-10 h-10 flex items-center justify-center bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 rounded-full text-black dark:text-white hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all active:scale-90 shadow-xl"
           >
             <span className="text-lg leading-none mt-[-2px]">‹</span>
           </button>
           <button 
             onClick={() => scroll(1)} 
-            className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-white hover:bg-white hover:text-black transition-all active:scale-90 shadow-xl"
+            className="w-10 h-10 flex items-center justify-center bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 rounded-full text-black dark:text-white hover:bg_white dark:hover:bg-black hover:text-black dark:hover:text-white transition-all active:scale-90 shadow-xl"
           >
             <span className="text-lg leading-none mt-[-2px]">›</span>
           </button>
@@ -70,7 +70,7 @@ export default function RecentBanner() {
           <Link 
             key={p._id} 
             href={`/product/${p._id}`} 
-            className="snap-start min-w-[280px] md:min-w-[320px] group relative bg-white/5 rounded-[32px] border border-transparent overflow-hidden transition-all duration-500 hover:border-white/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            className="snap-start min-w-[280px] md:min-w-[320px] group relative bg-white/5 dark:bg-black/5 rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden transition-all duration-500 hover:border-gray-300/30 dark:hover:border-white/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
           >
             {/* Image Container */}
             <div className="relative aspect-[4/5] w-full overflow-hidden">
@@ -88,7 +88,7 @@ export default function RecentBanner() {
               
               {/* Tag Badge */}
               <div className="absolute top-4 left-4">
-                <span className="bg-black/60 backdrop-blur-md text-[9px] font-black uppercase tracking-widest text-white px-3 py-1.5 rounded-full border border-white/10">
+                <span className="bg-white/60 dark:bg-black/60 backdrop-blur-md text-[9px] font-black uppercase tracking-widest text-black dark:text-white px-3 py-1.5 rounded-full border border-gray-200/30 dark:border-white/10">
                   {p.category}
                 </span>
               </div>
@@ -101,10 +101,10 @@ export default function RecentBanner() {
                   {p.Gender}
                 </p>
                 <div className="flex justify-between items-end">
-                  <h3 className="text-lg font-bold text-white tracking-tight leading-none group-hover:translate-x-1 transition-transform">
+                  <h3 className="text-lg font-bold text-black dark:text-white tracking-tight leading-none group-hover:translate-x-1 transition-transform">
                     {p.name}
                   </h3>
-                  <span className="text-xl font-light text-white italic">
+                  <span className="text-xl font-light text-black dark:text-white italic">
                     ${Number(p.price || 0).toFixed(0)}
                   </span>
                 </div>
@@ -112,7 +112,7 @@ export default function RecentBanner() {
               
               {/* Hidden Action Bar (Reveals on Hover) */}
               <div className="mt-4 h-0 opacity-0 group-hover:h-8 group-hover:opacity-100 transition-all duration-300">
-                <span className="text-[10px] font-black uppercase tracking-widest text-white/40 group-hover:text-white">
+                <span className="text-[10px] font-black uppercase tracking-widest text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white">
                   View Details —&gt;
                 </span>
               </div>

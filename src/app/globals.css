@@ -1,7 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default: light theme */
 body {
+  @apply bg-white text-black;
+}
+
+/* Dark theme when `.dark` on the root */
+.dark body {
   @apply bg-black text-white;
 }
 @layer components {

@@ -4,7 +4,7 @@ import RecentBanner from "../component/RecentBanner";
 
 export default function Home() {
     return (
-        <div className="bg-black text-white min-h-screen">
+        <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white">
             {/* HERO SECTION */}
             <Hero />
 
@@ -36,11 +36,11 @@ export default function Home() {
                 {/* 2. CORE PILLARS (The Cards You Requested) */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
                     {/* Card 1: Faith */}
-                    <div className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-500 group">
+                        <div className="p-8 rounded-[32px] bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 hover:bg-white/10 dark:hover:bg-black/10 hover:border-emerald-500/30 transition-all duration-500 group">
                         <div className="w-12 h-12 mb-6 rounded-full bg-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/40 transition-colors">
                             <span className="text-emerald-400 text-xl">∞</span>
                         </div>
-                        <h3 className="text-xl font-black uppercase italic tracking-wider mb-3 text-white">
+                        <h3 className="text-xl font-black uppercase italic tracking-wider mb-3 text-black dark:text-white">
                             STREET AESTHETIC
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
@@ -49,11 +49,11 @@ export default function Home() {
                     </div>
 
                     {/* Card 2: Quality */}
-                    <div className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-500 group">
+                        <div className="p-8 rounded-[32px] bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 hover:bg-white/10 dark:hover:bg-black/10 hover:border-emerald-500/30 transition-all duration-500 group">
                         <div className="w-12 h-12 mb-6 rounded-full bg-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/40 transition-colors">
                             <span className="text-emerald-400 text-xl">✦</span>
                         </div>
-                        <h3 className="text-xl font-black uppercase italic tracking-wider mb-3 text-white">
+                        <h3 className="text-xl font-black uppercase italic tracking-wider mb-3 text-black dark:text-white">
                             Premium Build
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
@@ -62,11 +62,11 @@ export default function Home() {
                     </div>
 
                     {/* Card 3: Expression */}
-                    <div className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-emerald-500/30 transition-all duration-500 group">
+                        <div className="p-8 rounded-[32px] bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 hover:bg-white/10 dark:hover:bg-black/10 hover:border-emerald-500/30 transition-all duration-500 group">
                         <div className="w-12 h-12 mb-6 rounded-full bg-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/40 transition-colors">
                             <span className="text-emerald-400 text-xl">⚡</span>
                         </div>
-                        <h3 className="text-xl font-black uppercase italic tracking-wider mb-3 text-white">
+                        <h3 className="text-xl font-black uppercase italic tracking-wider mb-3 text-black dark:text-white">
                             Built for Wear
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
@@ -76,23 +76,23 @@ export default function Home() {
                 </div>
 
                {/* 3. TRUST & LOGISTICS STRIP */}
-                <div className="w-full border-y border-white/10 py-12 mb-32 bg-white/[0.02]">
+                <div className="w-full border-y border-gray-200/30 dark:border-white/10 py-12 mb-32 bg-white/[0.02] dark:bg-black/[0.02]">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                        
                         <div>
-                            <h4 className="text-2xl font-black italic text-white">100%</h4>
+                            <h4 className="text-2xl font-black italic text-black dark:text-white">100%</h4>
                             <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">Premium Quality</p>
                         </div>
                         <div>
-                            <h4 className="text-2xl font-black italic text-white">Fast</h4>
+                            <h4 className="text-2xl font-black italic text-black dark:text-white">Fast</h4>
                             <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">Global Delivery</p>
                         </div>
                          <div>
-                            <h4 className="text-2xl font-black italic text-white">24/7</h4>
+                            <h4 className="text-2xl font-black italic text-black dark:text-white">24/7</h4>
                             <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">Support Checked</p>
                          </div>
                         <div>
-                            <h4 className="text-2xl font-black italic text-white">Secure</h4>
+                            <h4 className="text-2xl font-black italic text-black dark:text-white">Secure</h4>
                             <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">Payment Gateways</p>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ export default function Home() {
                                 <div key={i} className="flex gap-6 group">
                                     <div className="h-px w-8 bg-emerald-500/50 mt-3 group-hover:w-12 transition-all duration-300" />
                                     <div>
-                                        <h4 className="text-white font-black uppercase text-sm tracking-widest">{step.title}</h4>
+                                        <h4 className="text-black dark:text-white font-black uppercase text-sm tracking-widest">{step.title}</h4>
                                         <p className="text-gray-500 text-xs mt-2 max-w-sm leading-relaxed">{step.desc}</p>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@ export default function Home() {
                     {/* Right Side Visual / Verification Glass Card */}
                     <div className="relative group">
                         <div className="absolute inset-0 bg-emerald-500/10 blur-[100px] -z-10 group-hover:bg-emerald-500/20 transition-all duration-700" />
-                        <div className="p-12 rounded-[40px] bg-white/5 backdrop-blur-3xl border border-white/10 relative overflow-hidden">
+                        <div className="p-12 rounded-[40px] bg-white/5 dark:bg-black/5 backdrop-blur-3xl border border-gray-200/30 dark:border-white/10 relative overflow-hidden">
                             <div className="w-16 h-16 rounded-full border border-emerald-500/30 flex items-center justify-center mb-8">
                                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
                             </div>

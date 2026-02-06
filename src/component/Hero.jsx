@@ -12,7 +12,7 @@ function Hero() {
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* 2. MAIN HERO CONTAINER */}
-      <div className="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-stretch rounded-[40px] border border-transparent bg-white/5 backdrop-blur-2xl overflow-hidden shadow-2xl">
+      <div className="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-stretch rounded-[40px] border border-gray-200/30 dark:border-white/10 bg-white/5 backdrop-blur-2xl overflow-hidden shadow-2xl">
         
         {/* LEFT CONTENT AREA */}
         <div className="flex-1 p-8 md:p-16 flex flex-col justify-center bg-gradient-to-br from-white/5 to-transparent">
@@ -24,9 +24,9 @@ function Hero() {
               </p>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tighter leading-[0.9] italic uppercase">
+             <h1 className="text-5xl md:text-7xl font-extrabold text-black dark:text-white tracking-tighter leading-[0.9] italic uppercase">
               Accelerate <br /> 
-              <span className="text-gray-500 not-italic">Your Pace</span>
+              <span className="text-gray-600 dark:text-gray-400 not-italic">Your Pace</span>
             </h1>
 
             <p className="max-w-md text-sm text-gray-400 leading-relaxed font-medium">
@@ -63,7 +63,7 @@ function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent md:from-black/20"></div>
           
           {/* Floating Badge */}
-          <div className="absolute bottom-8 right-8 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
+          <div className="absolute bottom-8 right-8 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-gray-200/30 dark:border-white/20">
              <p className="text-[9px] font-black text-white uppercase tracking-tighter mb-1">New Drop</p>
              <p className="text-xl font-bold text-white italic">001_v2</p>
           </div>
@@ -75,3 +75,4 @@ function Hero() {
 }
 
 export default Hero;
+

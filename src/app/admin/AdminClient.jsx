@@ -132,15 +132,15 @@ export default function AdminClient() {
   const availableOptions = SIZE_CONFIG[category] || [];
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-emerald-500/30 selection:text-emerald-200 p-6 lg:p-8">
+    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white font-sans selection:bg-emerald-500/30 selection:text-emerald-200 p-6 lg:p-8">
       
       <main className="max-w-[1400px] mx-auto">
         
         {/* Header */}
-        <div className="mb-10 border-b border-white/10 pb-6 flex justify-between items-end">
+        <div className="mb-10 border-b border-gray-200/30 dark:border-white/10 pb-6 flex justify-between items-end">
             <div>
-                <h1 className="text-4xl font-black italic uppercase tracking-tighter text-white">
-                    Admin <span className="text-gray-600 not-italic">Panel</span>
+                <h1 className="text-4xl font-black italic uppercase tracking-tighter text-black dark:text-white">
+                  Admin <span className="text-gray-600 dark:text-gray-400 not-italic">Panel</span>
                 </h1>
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
                     Inventory Management System
@@ -164,8 +164,8 @@ export default function AdminClient() {
           
           {/* --- LEFT: CREATE PRODUCT FORM --- */}
           <section className="xl:col-span-4 h-fit">
-            <div className="bg-white/5 backdrop-blur-xl rounded-[32px] border border-white/10 overflow-hidden sticky top-24 shadow-2xl">
-              <div className="p-8 border-b border-white/10">
+            <div className="bg-white/5 dark:bg-black/5 backdrop-blur-xl rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden sticky top-24 shadow-2xl">
+              <div className="p-8 border-b border-gray-200/30 dark:border-white/10">
                 <h2 className="text-lg font-black uppercase tracking-widest italic">Deploy New Item</h2>
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Add equipment to the arsenal</p>
               </div>
@@ -179,7 +179,7 @@ export default function AdminClient() {
                     value={name} 
                     onChange={e => setName(e.target.value)} 
                     required 
-                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-white outline-none focus:border-emerald-500 transition-all placeholder:text-gray-700 uppercase tracking-wide" 
+                    className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-black dark:text-white outline-none focus:border-emerald-500 transition-all placeholder:text-gray-700 uppercase tracking-wide" 
                     placeholder="e.g. Slim Fit Denim Jacket" 
                   />
                 </div>
@@ -192,7 +192,7 @@ export default function AdminClient() {
                       value={price} 
                       onChange={e => setPrice(e.target.value)} 
                       required 
-                      className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-white outline-none focus:border-emerald-500 transition-all" 
+                      className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-black dark:text-white outline-none focus:border-emerald-500 transition-all" 
                       placeholder="0.00" 
                     />
                 </div>
@@ -205,12 +205,12 @@ export default function AdminClient() {
                       value={gender} 
                       onChange={e => setGender(e.target.value)} 
                       required 
-                      className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-white outline-none focus:border-emerald-500 transition-all cursor-pointer appearance-none uppercase"
+                      className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-black dark:text-white outline-none focus:border-emerald-500 transition-all cursor-pointer appearance-none uppercase"
                     >
-                      <option value="" className="bg-black text-gray-500">Select...</option>
-                      <option value="MEN" className="bg-black">Men</option>
-                      <option value="WOMEN" className="bg-black">Women</option>
-                      <option value="UNISEX" className="bg-black">Unisex</option>
+                      <option value="" className="bg-white dark:bg-black text-gray-500">Select...</option>
+                      <option value="MEN" className="bg-white dark:bg-black">Men</option>
+                      <option value="WOMEN" className="bg-white dark:bg-black">Women</option>
+                      <option value="UNISEX" className="bg-white dark:bg-black">Unisex</option>
                     </select>
                   </div>
                   <div className="space-y-2">
@@ -219,18 +219,18 @@ export default function AdminClient() {
                       value={category} 
                       onChange={handleCategoryChange} 
                       required 
-                      className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-white outline-none focus:border-emerald-500 transition-all cursor-pointer appearance-none uppercase"
+                      className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-xs font-bold text-black dark:text-white outline-none focus:border-emerald-500 transition-all cursor-pointer appearance-none uppercase"
                     >
-                      <option value="" className="bg-black text-gray-500">Select...</option>
-                      {Object.keys(SIZE_CONFIG).map(cat => (
-                        <option key={cat} value={cat} className="bg-black">{cat}</option>
-                      ))}
+                        <option value="" className="bg-white dark:bg-black text-gray-500">Select...</option>
+                        {Object.keys(SIZE_CONFIG).map(cat => (
+                          <option key={cat} value={cat} className="bg-white dark:bg-black">{cat}</option>
+                        ))}
                     </select>
                   </div>
                 </div>
 
                 {/* --- INTELLIGENT SIZE SELECTOR --- */}
-                <div className={`p-6 rounded-2xl border transition-all duration-300 ${category ? 'bg-white/5 border-emerald-500/30' : 'bg-transparent border-dashed border-white/10'}`}>
+                <div className={`p-6 rounded-2xl border transition-all duration-300 ${category ? 'bg-white/5 border-emerald-500/30' : 'bg-transparent border-dashed border-gray-200/30 dark:border-white/10'}`}>
                   <div className="flex justify-between items-center mb-4">
                     <label className="text-[9px] font-black text-emerald-400 uppercase tracking-[0.2em]">
                       {category === 'Footwear' ? 'EU Sizes' : category === 'Bottomwear' ? 'Waist' : 'Sizes'}
@@ -253,7 +253,7 @@ export default function AdminClient() {
                               px-3 py-2 text-[10px] font-black rounded-lg border transition-all duration-200 uppercase tracking-wider
                               ${isSelected 
                                 ? 'bg-emerald-400 text-black border-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.3)]' 
-                                : 'bg-transparent text-gray-400 border-white/10 hover:border-white hover:text-white'}
+                                : 'bg-transparent text-gray-600 dark:text-gray-400 border border-gray-200/30 dark:border-white/10 hover:border-gray-300 hover:text-black dark:hover:text-white'}
                             `}
                           >
                             {size}
@@ -271,7 +271,7 @@ export default function AdminClient() {
                     value={description} 
                     onChange={e => setDescription(e.target.value)} 
                     rows={3} 
-                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-xs text-white outline-none focus:border-emerald-500 transition-all resize-none placeholder:text-gray-700" 
+                    className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-xs text-black dark:text-white outline-none focus:border-emerald-500 transition-all resize-none placeholder:text-gray-700" 
                     placeholder="Material, fit, and style details..." 
                   />
                 </div>
@@ -282,7 +282,7 @@ export default function AdminClient() {
                   <textarea 
                     value={imagesText} 
                     onChange={e => setImagesText(e.target.value)} 
-                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-[10px] font-mono text-gray-300 outline-none focus:border-emerald-500 transition-all placeholder:text-gray-700" 
+                    className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-[10px] font-mono text-gray-800 dark:text-gray-300 outline-none focus:border-emerald-500 transition-all placeholder:text-gray-700" 
                     placeholder={`https://...\nhttps://...`}
                     rows={2}
                   />
@@ -291,7 +291,7 @@ export default function AdminClient() {
 
                 {/* Image Preview - FIXED: Added check for valid URL */}
                 {previewImage && (
-                  <div className="relative group rounded-xl overflow-hidden border border-white/10">
+                  <div className="relative group rounded-xl overflow-hidden border border-gray-200/30 dark:border-white/10">
                     <Image 
                       src={previewImage} 
                       alt="Preview" 
@@ -319,8 +319,8 @@ export default function AdminClient() {
 
           {/* --- RIGHT: INVENTORY TABLE --- */}
           <section className="xl:col-span-8">
-            <div className="bg-white/5 backdrop-blur-xl rounded-[32px] border border-white/10 overflow-hidden min-h-[600px] flex flex-col shadow-2xl">
-              <div className="p-8 border-b border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="bg-white/5 dark:bg-black/5 backdrop-blur-xl rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden min-h-[600px] flex flex-col shadow-2xl">
+              <div className="p-8 border-b border-gray-200/30 dark:border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                   <h2 className="text-lg font-black uppercase tracking-widest italic">Inventory Matrix</h2>
                   <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Global Stock Overview</p>
@@ -328,17 +328,17 @@ export default function AdminClient() {
 
                 {/* Per-size stock controls when sizes selected */}
                 {selectedSizes.length > 0 && (
-                  <div className="p-4 bg-black/40 rounded-2xl border border-white/5">
+                  <div className="p-4 bg-white/5 dark:bg-black/40 rounded-2xl border border-gray-200/30 dark:border-white/5">
                     <div className="text-[9px] text-emerald-400 font-black uppercase tracking-widest mb-3">Stock Allocation Per Size</div>
                     <div className="flex flex-wrap gap-2">
                       {selectedSizes.map((s) => (
-                        <div key={s} className="flex items-center gap-2 bg-white/5 px-2 py-1 rounded-lg border border-white/10">
-                          <div className="text-[10px] font-bold text-white w-6 text-center">{s}</div>
+                        <div key={s} className="flex items-center gap-2 bg-white/5 dark:bg-black/5 px-2 py-1 rounded-lg border border-gray-200/30 dark:border-white/10">
+                          <div className="text-[10px] font-bold text-black dark:text-white w-6 text-center">{s}</div>
                           <input
                             type="number"
                             value={sizesStock[s] ?? 0}
                             onChange={e => setSizesStock(prev => ({ ...prev, [s]: Number(e.target.value) }))}
-                            className="w-16 bg-black border border-white/10 rounded px-2 py-1 text-xs text-center text-white outline-none focus:border-emerald-500"
+                            className="w-16 bg-white/5 dark:bg-black border border-gray-200/30 dark:border-white/10 rounded px-2 py-1 text-xs text-center text-black dark:text-white outline-none focus:border-emerald-500"
                           />
                         </div>
                       ))}
@@ -350,7 +350,7 @@ export default function AdminClient() {
               <div className="overflow-x-auto flex-1">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-white/5 text-gray-500 text-[9px] uppercase font-black tracking-[0.2em] border-b border-white/10">
+                    <tr className="bg-white/5 dark:bg-black/5 text-gray-500 dark:text-gray-400 text-[9px] uppercase font-black tracking-[0.2em] border-b border-gray-200/30 dark:border-white/10">
                       <th className="px-6 py-5 pl-8">Asset</th>
                       <th className="px-6 py-5">Gender</th>
                       <th className="px-6 py-5">Class</th>
@@ -360,7 +360,7 @@ export default function AdminClient() {
                       <th className="px-6 py-5 text-right pr-8">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/5">
+                  <tbody className="divide-y divide-gray-200/5 dark:divide-white/5">
                     {loading ? (
                       [1, 2, 3, 4].map((i) => (
                         <tr key={i} className="animate-pulse">
@@ -379,11 +379,11 @@ export default function AdminClient() {
                         </td>
                       </tr>
                     ) : products.map((p) => (
-                      <tr key={p._id} className="hover:bg-white/5 transition-colors group">
+                      <tr key={p._id} className="hover:bg-white/5 dark:hover:bg-black/5 transition-colors group">
                         <td className="px-6 py-4 pl-8">
                           <Link href={`/product/${p._id}`} className="block">
                             <div className="flex items-center gap-4">
-                              <div className="w-12 h-12 rounded-lg bg-gray-900 border border-white/10 overflow-hidden shrink-0 relative group-hover:border-emerald-500/50 transition-colors">
+                              <div className="w-12 h-12 rounded-lg bg-gray-900 dark:bg-gray-800 border border-gray-200/30 dark:border-white/10 overflow-hidden shrink-0 relative group-hover:border-emerald-500/50 transition-colors">
                                 {p.images?.[0]?.url ? (
                                   <Image
                                     src={p.images[0].url}
@@ -397,7 +397,7 @@ export default function AdminClient() {
                                 )}
                               </div>
                               <div className="flex flex-col">
-                                <span className="font-bold text-white text-xs line-clamp-1 uppercase tracking-wide group-hover:text-emerald-400 transition-colors">{p.name}</span>
+                                <span className="font-bold text-black dark:text-white text-xs line-clamp-1 uppercase tracking-wide group-hover:text-emerald-400 transition-colors">{p.name}</span>
                                 <span className="text-[9px] text-gray-600 font-mono">ID: {p._id.slice(-6)}</span>
                               </div>
                             </div>
@@ -426,7 +426,7 @@ export default function AdminClient() {
                           <div className="flex flex-wrap gap-1">
                             {/* Handling array of sizes or single feature string */}
                             {(Array.isArray(p.sizes) ? p.sizes.map(x => (typeof x === 'string' ? x : x.size)) : [p.features?.size || 'N/A']).slice(0, 3).map((s, idx) => (
-                              <span key={idx} className="text-[9px] bg-white/5 border border-white/10 text-gray-400 px-1.5 py-0.5 rounded font-bold uppercase">
+                              <span key={idx} className="text-[9px] bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 text-gray-400 px-1.5 py-0.5 rounded font-bold uppercase">
                                 {s}
                               </span>
                             ))}
@@ -436,10 +436,10 @@ export default function AdminClient() {
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          <span className="text-xs font-bold text-white font-mono">${p.price?.toFixed(2)}</span>
+                          <span className="text-xs font-bold text-black dark:text-white font-mono">${p.price?.toFixed(2)}</span>
                         </td>
                         <td className="px-6 py-4 text-right pr-8">
-                          <button onClick={() => onDelete(p._id)} className="p-2 text-gray-600 hover:text-red-500 transition-all hover:bg-white/5 rounded-lg" title="Delete Asset">
+                          <button onClick={() => onDelete(p._id)} className="p-2 text-gray-600 hover:text-red-500 transition-all hover:bg-white/5 dark:hover:bg-black/5 rounded-lg" title="Delete Asset">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                           </button>
                         </td>

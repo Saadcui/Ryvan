@@ -24,30 +24,30 @@ export default function CartPage() {
   const total = subtotal + shipping;
 
   return (
-    <div className="min-h-screen bg-black text-white px-4 sm:px-10 py-12">
+    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white px-4 sm:px-10 py-12">
       <div className="max-w-6xl mx-auto">
         
         {/* HEADER & PROGRESS STEPPER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-white/10 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-gray-200/30 dark:border-white/10 pb-8">
           <div>
             <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter">
-              Your <span className="text-gray-500 not-italic">Cart</span>
+              Your <span className="text-gray-500 dark:text-gray-400 not-italic">Cart</span>
             </h1>
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
               Ready for Deployment • {cartCount} Units
             </p>
           </div>
           
-          {/* Stepper logic */}
-          <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest">
-             <span className="text-white border-b-2 border-white pb-1">01. Cart</span>
-             <span className="text-gray-600">02. Shipping</span>
-             <span className="text-gray-600">03. Payment</span>
-          </div>
+           {/* Stepper logic */}
+           <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest">
+             <span className="text-black dark:text-white border-b-2 border-black/10 dark:border-white pb-1">01. Cart</span>
+             <span className="text-gray-600 dark:text-gray-400">02. Shipping</span>
+             <span className="text-gray-600 dark:text-gray-400">03. Payment</span>
+           </div>
         </div>
 
         {items.length === 0 ? (
-          <div className="mt-12 p-16 rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl text-center">
+                <div className="mt-12 p-16 rounded-[40px] border border-gray-200/30 dark:border-white/10 bg-white/5 dark:bg-black/5 backdrop-blur-xl text-center">
             <p className="text-xl font-bold italic text-gray-400 mb-6 uppercase">Your hangar is empty.</p>
             <Link href="/collection" className="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded-2xl hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
               Acquire Equipment
@@ -60,10 +60,10 @@ export default function CartPage() {
             <div className="lg:col-span-2 space-y-4">
               {items.map((it) => (
                 // CRITICAL UPDATE: Key must utilize both ID and SIZE to be unique
-                <div key={`${it.id}-${it.size}`} className="group relative flex flex-col sm:flex-row gap-6 p-6 rounded-[32px] bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500">
+                <div key={`${it.id}-${it.size}`} className="group relative flex flex-col sm:flex-row gap-6 p-6 rounded-[32px] bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 hover:border-gray-300/20 dark:hover:border-white/20 transition-all duration-500">
                   
                   {/* IMAGE BOX */}
-                  <div className="relative w-full sm:w-32 h-40 sm:h-32 rounded-2xl overflow-hidden bg-gray-900 border border-white/5">
+                    <div className="relative w-full sm:w-32 h-40 sm:h-32 rounded-2xl overflow-hidden bg-gray-900 border border-gray-200/30 dark:border-white/5">
                     {it.image ? (
                       <Image
                         src={it.image}
@@ -103,11 +103,11 @@ export default function CartPage() {
 
                     <div className="flex flex-row sm:items-center justify-between mt-6">
                       {/* QTY CONTROLLER */}
-                      <div className="flex items-center bg-black rounded-xl border border-white/10 p-1">
+                      <div className="flex items-center bg-white/5 dark:bg-black rounded-xl border border-gray-200/30 dark:border-white/10 p-1">
                         <button
                           // Pass Size to setQty to ensure we update the correct variant
                           onClick={() => setQty(it.id, it.size, Math.max(1, Number(it.qty || 0) - 1))}
-                          className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+                          className="w-8 h-8 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                         >
                           -
                         </button>
@@ -115,7 +115,7 @@ export default function CartPage() {
                         <button
                            // Pass Size to setQty
                           onClick={() => setQty(it.id, it.size, Number(it.qty || 0) + 1)}
-                          className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+                          className="w-8 h-8 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                         >
                           +
                         </button>
@@ -130,19 +130,19 @@ export default function CartPage() {
 
             {/* ORDER SUMMARY PANEL (Unchanged) */}
             <div className="lg:sticky lg:top-28 h-fit space-y-6">
-              <div className="p-8 rounded-[40px] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+              <div className="p-8 rounded-[40px] bg-white/5 dark:bg-black/5 backdrop-blur-3xl border border-gray-200/30 dark:border-white/10 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-3xl -z-10" />
-                <h2 className="text-xs font-black uppercase tracking-[0.3em] mb-8 border-b border-white/10 pb-4">
+                  <h2 className="text-xs font-black uppercase tracking-[0.3em] mb-8 border-b border-gray-200/30 dark:border-white/10 pb-4">
                   Invoice Summary
                 </h2>
                 <div className="space-y-4 text-sm">
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Subtotal</span>
-                    <span className="text-white">${money(subtotal)}</span>
+                    <span className="text-black dark:text-white">${money(subtotal)}</span>
                   </div>
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Logistics (Shipping)</span>
-                    <span className={shipping === 0 ? 'text-emerald-400 font-bold' : 'text-white'}>
+                    <span className={shipping === 0 ? 'text-emerald-400 font-bold' : 'text-black dark:text-white'}>
                       {shipping === 0 ? 'FREE' : `$${money(shipping)}`}
                     </span>
                   </div>

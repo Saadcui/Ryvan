@@ -31,7 +31,7 @@ export default function CollectionPage() {
   }, [genderFilter, categoryFilter, products]);
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans relative overflow-hidden">
+    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white font-sans relative overflow-hidden">
       {/* Background Decor */}
       <div className="fixed top-0 right-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="fixed bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -39,7 +39,7 @@ export default function CollectionPage() {
       <div className="relative z-10 flex flex-col lg:flex-row min-h-screen">
         
         {/* SIDEBAR FILTERS - Glass Effect */}
-        <aside className="w-full lg:w-72 p-6 lg:p-10 lg:h-screen lg:sticky lg:top-0 bg-white/5 backdrop-blur-xl border-b lg:border-b-0 lg:border-r border-transparent">
+        <aside className="w-full lg:w-72 p-6 lg:p-10 lg:h-screen lg:sticky lg:top-0 bg-white/5 dark:bg-black/5 backdrop-blur-xl border-b lg:border-b-0 lg:border-r border border-gray-200/30 dark:border-white/10">
           <div className="mb-10">
             <h2 className='text-2xl font-extrabold tracking-tighter uppercase mb-2'>Accelerate</h2>
             <p className="text-[10px] text-gray-500 tracking-[0.2em] uppercase">Collections</p>
@@ -58,8 +58,8 @@ export default function CollectionPage() {
                       onChange={() => setGenderFilter(g)} 
                       className="hidden"
                     />
-                    <div className={`w-2 h-2 rounded-full transition-all ${genderFilter === g ? 'bg-white scale-150 shadow-[0_0_8px_white]' : 'bg-white/20'}`}></div>
-                    <span className={`text-sm font-medium transition-colors ${genderFilter === g ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>{g}</span>
+                    <div className={`w-2 h-2 rounded-full transition-all ${genderFilter === g ? 'bg-black dark:bg-white scale-150 shadow-[0_0_8px_rgba(0,0,0,0.12)] dark:shadow-[0_0_8px_rgba(255,255,255,0.12)]' : 'bg-white/20'}`}></div>
+                    <span className={`text-sm font-medium transition-colors ${genderFilter === g ? 'text-black dark:text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>{g}</span>
                   </label>
                 ))}
               </div>
@@ -70,14 +70,14 @@ export default function CollectionPage() {
               <select 
                 value={categoryFilter} 
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-sm font-medium outline-none focus:border-white/40 text-white transition-all appearance-none cursor-pointer"
+                className="w-full p-3 bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 rounded-xl text-sm font-medium outline-none focus:border-gray-300/40 dark:focus:border-white/40 text-black dark:text-white transition-all appearance-none cursor-pointer"
               >
-                <option className="bg-gray-900" value="ALL">All Categories</option>
-                <option className="bg-gray-900" value="Topwear">Topwear</option>
-                <option className="bg-gray-900" value="Bottomwear">Bottomwear</option>
-                <option className="bg-gray-900" value="Footwear">Footwear</option>
-                <option className="bg-gray-900" value="Outerwear">Outerwear</option>
-                <option className="bg-gray-900" value="Accessories">Accessories</option>
+                <option className="bg-white/5 dark:bg-black/5 text-black dark:text-white" value="ALL">All Categories</option>
+                <option className="bg-white/5 dark:bg-black/5 text-black dark:text-white" value="Topwear">Topwear</option>
+                <option className="bg-white/5 dark:bg-black/5 text-black dark:text-white" value="Bottomwear">Bottomwear</option>
+                <option className="bg-white/5 dark:bg-black/5 text-black dark:text-white" value="Footwear">Footwear</option>
+                <option className="bg-white/5 dark:bg-black/5 text-black dark:text-white" value="Outerwear">Outerwear</option>
+                <option className="bg-white/5 dark:bg-black/5 text-black dark:text-white" value="Accessories">Accessories</option>
               </select>
             </div>
           </div>
@@ -85,12 +85,12 @@ export default function CollectionPage() {
 
         {/* PRODUCT GRID */}
         <main className="flex-1 p-6 lg:p-12">
-          <div className="mb-10 flex items-end justify-between border-b border-transparent pb-6">
+          <div className="mb-10 flex items-end justify-between border-b border-gray-200/30 dark:border-white/10 pb-6">
               <div>
-                <h1 className="text-4xl font-bold text-white tracking-tight italic">New Arrivals</h1>
-                <p className="text-gray-500 text-sm mt-1">Curated selection for your lifestyle</p>
+                <h1 className="text-4xl font-bold text-black dark:text-white tracking-tight italic">New Arrivals</h1>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Curated selection for your lifestyle</p>
               </div>
-              <span className="text-xs font-mono text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-transparent">{filteredProducts.length} Items</span>
+              <span className="text-xs font-mono text-gray-400 bg-white/5 dark:bg-black/5 px-3 py-1 rounded-full border border-gray-200/30 dark:border-white/10">{filteredProducts.length} Items</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
@@ -147,7 +147,7 @@ const { addToCart } = useCart();
   };
 
   return (
-    <div className={`group relative bg-white/5 rounded-[32px] border border-white/10 overflow-hidden hover:border-white/30 transition-all duration-500 flex flex-col ${isSoldOut ? 'opacity-60 grayscale' : ''}`}>
+    <div className={`group relative bg-white/5 dark:bg-black/5 rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden hover:border-gray-300/30 dark:hover:border-white/30 transition-all duration-500 flex flex-col ${isSoldOut ? 'opacity-60 grayscale' : ''}`}>
       
       {/* Image Area */}
       <div className="relative aspect-[4/5] overflow-hidden">
@@ -165,7 +165,7 @@ const { addToCart } = useCart();
         
         {/* Badges */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
-            <span className="bg-black/60 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/10">
+            <span className="bg-white/60 dark:bg-black/60 backdrop-blur-md text-black dark:text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-gray-200/30 dark:border-white/10">
               {product.category}
             </span>
             {isSoldOut && (
@@ -180,12 +180,12 @@ const { addToCart } = useCart();
       <div className="p-6 flex flex-col flex-1 bg-gradient-to-t from-black/80 to-transparent">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <h3 className="font-bold text-lg text-white leading-tight">
+            <h3 className="font-bold text-lg text-black dark:text-white leading-tight">
               <Link href={`/product/${product._id}`} className="hover:text-gray-300 transition-colors">{product.name}</Link>
             </h3>
-            <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">{product.Gender}</p>
+            <p className="text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-widest mt-1">{product.Gender}</p>
           </div>
-          <span className="font-light text-xl text-white">${product.price}</span>
+          <span className="font-light text-xl text-black dark:text-white">${product.price}</span>
         </div>
 
         {/* Action Section */}
@@ -200,10 +200,10 @@ const { addToCart } = useCart();
                   className={`
                     w-9 h-9 flex items-center justify-center text-[10px] font-bold rounded-xl border transition-all
                     ${selectedSize === s.size 
-                      ? 'bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.4)]' 
+                      ? 'bg-white text-black dark:bg-emerald-400 dark:text-black border border-gray-200/30 dark:border-white shadow-sm' 
                       : s.stock === 0 
-                        ? 'bg-transparent text-gray-700 border-white/5 cursor-not-allowed line-through'
-                        : 'bg-white/5 text-white border-white/10 hover:border-white/40'}
+                        ? 'bg-transparent text-gray-700 border border-gray-200/30 dark:border-white/10 cursor-not-allowed line-through'
+                        : 'bg-white/5 dark:bg-black/5 text-black dark:text-white border border-gray-200/30 dark:border-white/10 hover:border-gray-300/40'}
                   `}
                 >
                   {s.size}
@@ -218,11 +218,11 @@ const { addToCart } = useCart();
             className={`
               w-full py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all transform active:scale-95
               ${isSoldOut 
-                ? 'bg-white/5 text-gray-600 cursor-not-allowed' 
+                ? 'bg-white/5 dark:bg-black/5 text-gray-600 cursor-not-allowed' 
                 : !selectedSize
-                  ? 'bg-white/10 text-white hover:bg-white/20 border border-white/10'
+                  ? 'bg-white/10 dark:bg-black/10 text-black dark:text-white hover:bg-white/20 dark:hover:bg-black/20 border border-gray-200/30 dark:border-white/10'
                   : isSizeAvailable 
-                    ? 'bg-white text-black hover:bg-gray-200' 
+                    ? 'bg-white text-black dark:bg-emerald-400 dark:text-black hover:bg-gray-200 dark:hover:bg-emerald-500' 
                     : 'bg-red-900/20 text-red-500 border border-red-500/20 cursor-not-allowed'}
             `}
           >
