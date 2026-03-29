@@ -41,7 +41,7 @@ export default function CollectionPage() {
         {/* SIDEBAR FILTERS - Glass Effect */}
         <aside className="w-full lg:w-72 p-6 lg:p-10 lg:h-screen lg:sticky lg:top-0 bg-white/5 dark:bg-black/5 backdrop-blur-xl border-b lg:border-b-0 lg:border-r border border-gray-200/30 dark:border-white/10">
           <div className="mb-10">
-            <h2 className='text-2xl font-extrabold tracking-tighter uppercase mb-2'>Accelerate</h2>
+            <h2 className='text-2xl font-extrabold traking-tighter uppercase mb-2'>Accelerate</h2>
             <p className="text-[10px] text-gray-500 tracking-[0.2em] uppercase">Collections</p>
           </div>
 
@@ -59,7 +59,7 @@ export default function CollectionPage() {
                       className="hidden"
                     />
                     <div className={`w-2 h-2 rounded-full transition-all ${genderFilter === g ? 'bg-black dark:bg-white scale-150 shadow-[0_0_8px_rgba(0,0,0,0.12)] dark:shadow-[0_0_8px_rgba(255,255,255,0.12)]' : 'bg-white/20'}`}></div>
-                    <span className={`text-sm font-medium transition-colors ${genderFilter === g ? 'text-black dark:text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>{g}</span>
+                    <span className={`text-sm font-mcedium transition-colors ${genderFilter === g ? 'text-black dark:text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>{g}</span>
                   </label>
                 ))}
               </div>
@@ -178,14 +178,14 @@ const { addToCart } = useCart();
 
       {/* Details Area */}
       <div className="p-6 flex flex-col flex-1 bg-gradient-to-t from-black/80 to-transparent">
-        <div className="flex justify-between items-start mb-4">
+          <div className="flex justify-between items-start mb-4">
           <div>
             <h3 className="font-bold text-lg text-black dark:text-white leading-tight">
               <Link href={`/product/${product._id}`} className="hover:text-gray-300 transition-colors">{product.name}</Link>
             </h3>
             <p className="text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-widest mt-1">{product.Gender}</p>
           </div>
-          <span className="font-light text-xl text-black dark:text-white">${product.price}</span>
+          <span className="font-light text-xl text-black dark:text-white">Rs {product.price}</span>
         </div>
 
         {/* Action Section */}

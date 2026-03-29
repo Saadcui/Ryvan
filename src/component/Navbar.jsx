@@ -23,7 +23,7 @@ export default function Navbar() {
           'pointer-events-auto' allows interaction with the bar while the 
           header padding remains click-through to the background.
       */}
-      <nav className="mx-auto max-w-6xl flex items-center justify-between px-6 py-3 rounded-2xl bg-white/5 backdrop-blur-xl border border-gray-200/30 dark:border-white/10 shadow-2xl pointer-events-auto">
+      <nav className="mx-auto max-w-6xl flex items-center justify-between px-6 py-3 rounded-2xl bg-white/80 dark:bg-black/70 border border-gray-200/30 dark:border-white/10 shadow-2xl pointer-events-auto print:hidden">
         
         {/* LOGO SECTION */}
         <Link href="/" className="flex items-center gap-2 group">

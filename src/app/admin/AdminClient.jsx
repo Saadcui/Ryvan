@@ -146,9 +146,14 @@ export default function AdminClient() {
                     Inventory Management System
                 </p>
             </div>
-            <div className="hidden sm:block text-right">
-                <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Total Assets</p>
-                <p className="text-2xl font-black italic">{products.length} Units</p>
+            <div className="hidden sm:flex items-center gap-4 text-right">
+                <Link href="/admin/orders" className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                  Manage Orders
+                </Link>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Total Assets</p>
+                  <p className="text-2xl font-black italic">{products.length} Units</p>
+                </div>
             </div>
         </div>
 
@@ -186,7 +191,7 @@ export default function AdminClient() {
 
                 {/* Price Row */}
                 <div className="space-y-2">
-                    <label className="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em]">Price ($)</label>
+                    <label className="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em]">Price (Rs)</label>
                     <input 
                       type="number" 
                       value={price} 
@@ -436,7 +441,7 @@ export default function AdminClient() {
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          <span className="text-xs font-bold text-black dark:text-white font-mono">${p.price?.toFixed(2)}</span>
+                          <span className="text-xs font-bold text-black dark:text-white font-mono">Rs {p.price?.toFixed(2)}</span>
                         </td>
                         <td className="px-6 py-4 text-right pr-8">
                           <button onClick={() => onDelete(p._id)} className="p-2 text-gray-600 hover:text-red-500 transition-all hover:bg-white/5 dark:hover:bg-black/5 rounded-lg" title="Delete Asset">

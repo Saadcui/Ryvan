@@ -105,7 +105,7 @@ export default function RecentBanner() {
                     {p.name}
                   </h3>
                   <span className="text-xl font-light text-black dark:text-white italic">
-                    ${Number(p.price || 0).toFixed(0)}
+                    Rs {Number(p.price || 0).toFixed(0)}
                   </span>
                 </div>
               </div>

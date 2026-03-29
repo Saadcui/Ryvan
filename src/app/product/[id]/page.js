@@ -114,7 +114,7 @@ export default function ProductPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-2 tracking-tight text-black dark:text-white">{product.name}</h1>
             <p className="text-green-600 dark:text-green-400 font-medium mb-6">{product.Gender} Collection</p>
             
-            <div className="text-4xl font-light mb-8 text-black dark:text-white">${Number(product.price || 0).toFixed(2)}</div>
+            <div className="text-4xl font-light mb-8 text-black dark:text-white">Rs {Number(product.price || 0).toFixed(2)}</div>
             
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 border-l-2 border-gray-200/20 dark:border-white/20 pl-4">
               {product.description}

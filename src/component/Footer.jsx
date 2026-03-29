@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer id="footer" className="relative mt-24 border-t border-gray-200/30 dark:border-white/10 bg-white dark:bg-black">
+    <footer id="footer" className="relative mt-24 border-t border-gray-200/30 dark:border-white/10 bg-white dark:bg-black print:hidden">
       {/* Glow Effect */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-32 bg-blue-600/10 blur-[100px] pointer-events-none" />
 

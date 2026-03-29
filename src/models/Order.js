@@ -1,7 +1,21 @@
 import mongoose from 'mongoose';
 
 const OrderSchema = new mongoose.Schema({
-  userEmail: { type: String, required: true },
+  // --- Ownership ---
+  // Present if the order was placed by a logged-in user. Null for guests.
+  userId: { type: String, default: null },
+
+  // --- Customer & Delivery Details ---
+  email: { type: String, required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  address: { type: String, required: true },
+  city: { type: String, required: true },
+  postalCode: { type: String },
+  phone: { type: String, required: true },
+  country: { type: String, default: 'Pakistan' },
+
+  // --- Cargo ---
   items: [{
     productId: String,
     title: String,
@@ -10,11 +24,20 @@ const OrderSchema = new mongoose.Schema({
     qty: Number,
     size: String,
   }],
+
+  // --- Financials ---
   subtotal: Number,
   shipping: Number,
   total: Number,
-  status: { type: String, default: 'Processing' }, // Processing, In Transit, Delivered
+
+  // --- Logistics ---
+  shippingMethod: { type: String, default: 'Flat' },
+  paymentMethod: { type: String, default: 'COD' },
+  status: { type: String, default: 'Processing' }, // Processing, Shipped, Delivered, Cancelled
+
   createdAt: { type: Date, default: Date.now },
 });
 
-export default mongoose.models.Order || mongoose.model('Order', OrderSchema);
+// Force re-register: clear cache so schema changes take effect without full server restart
+if (mongoose.models.Order) delete mongoose.models.Order;
+export default mongoose.model('Order', OrderSchema);

@@ -17,9 +17,9 @@ export default function OrderCard({ order }) {
             <p className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-1">Date</p>
             <p className="text-sm font-bold text-black dark:text-white">{order.date}</p>
           </div>
-          <div>
+            <div>
             <p className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-1">Total</p>
-            <p className="text-sm font-black text-emerald-400">${order.total.toFixed(2)}</p>
+            <p className="text-sm font-black text-emerald-400">Rs {order.total.toFixed(2)}</p>
           </div>
         </div>
 
@@ -43,7 +43,7 @@ export default function OrderCard({ order }) {
               <p className="text-xs text-gray-500 mt-1 font-bold">Qty: {item.qty}</p>
             </div>
             <div className="text-right">
-                <p className="text-sm font-black text-black dark:text-white">${item.price}</p>
+              <p className="text-sm font-black text-black dark:text-white">Rs {item.price}</p>
             </div>
           </div>
         ))}

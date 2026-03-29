@@ -20,7 +20,7 @@ export default function CartPage() {
   const { items, cartCount, setQty, remove } = useCart();
 
   const subtotal = items.reduce((sum, it) => sum + Number(it.price || 0) * Number(it.qty || 0), 0);
-  const shipping = subtotal > 500 ? 0 : 25; 
+  const shipping = subtotal > 2000 ? 0 : 200; 
   const total = subtotal + shipping;
 
   return (
@@ -40,9 +40,8 @@ export default function CartPage() {
           
            {/* Stepper logic */}
            <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest">
-             <span className="text-black dark:text-white border-b-2 border-black/10 dark:border-white pb-1">01. Cart</span>
-             <span className="text-gray-600 dark:text-gray-400">02. Shipping</span>
-             <span className="text-gray-600 dark:text-gray-400">03. Payment</span>
+             <span className="text-black dark:text-white border-b-2 border-black/10 dark:border-white pb-1">Cart</span>
+             
            </div>
         </div>
 
@@ -121,7 +120,7 @@ export default function CartPage() {
                         </button>
                       </div>
                       
-                      <p className="text-xl font-light italic">${money(Number(it.price) * Number(it.qty))}</p>
+                      <p className="text-xl font-light italic">Rs {money(Number(it.price) * Number(it.qty))}</p>
                     </div>
                   </div>
                 </div>
@@ -138,12 +137,12 @@ export default function CartPage() {
                 <div className="space-y-4 text-sm">
                   <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Subtotal</span>
-                    <span className="text-black dark:text-white">${money(subtotal)}</span>
+                    <span className="text-black dark:text-white">Rs {money(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Logistics (Shipping)</span>
                     <span className={shipping === 0 ? 'text-emerald-400 font-bold' : 'text-black dark:text-white'}>
-                      {shipping === 0 ? 'FREE' : `$${money(shipping)}`}
+                      {shipping === 0 ? 'FREE' : `Rs ${money(shipping)}`}
                     </span>
                   </div>
                   {subtotal < 500 && (
@@ -159,12 +158,12 @@ export default function CartPage() {
                   )}
                   <div className="pt-4 mt-4 border-t border-white/10 flex justify-between items-end">
                     <span className="text-xs font-black uppercase tracking-widest">Total Liability</span>
-                    <span className="text-3xl font-black italic tracking-tighter">${money(total)}</span>
+                    <span className="text-3xl font-black italic tracking-tighter">Rs {money(total)}</span>
                   </div>
                 </div>
-                <button className="mt-10 w-full bg-white text-black py-5 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-emerald-400 transition-all transform active:scale-95 shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+                <Link href="/placeorder" className="block mt-10 w-full bg-white text-black py-5 rounded-2xl text-[11px] font-black uppercase text-center tracking-[0.2em] hover:bg-emerald-400 transition-all transform active:scale-95 shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
                   Initialize Checkout
-                </button>
+                </Link>
                 <p className="text-[9px] text-gray-600 text-center uppercase tracking-widest mt-6 font-bold">
                   Secure encrypted transmission
                 </p>
