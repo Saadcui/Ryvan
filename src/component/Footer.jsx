@@ -36,31 +36,32 @@ export default function Footer() {
             <ul className="text-sm text-gray-700 dark:text-gray-400 space-y-3">
               <li><Link href="/about" className="hover:text-black dark:hover:text-white transition-colors">Our Story</Link></li>
               <li><Link href="/contact" className="hover:text-black dark:hover:text-white transition-colors">Contact Service</Link></li>
-              <li><Link href="/shipping" className="hover:text-black dark:hover:text-white transition-colors">Tracking</Link></li>
-              <li><Link href="/admin" className="hover:text-black dark:hover:text-white transition-colors text-black/40 dark:text-white/30">Portal</Link></li>
+              <li><Link href="/orders" className="hover:text-black dark:hover:text-white transition-colors">Order Tracking</Link></li>
             </ul>
           </div>
 
           {/* Newsletter Column */}
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black dark:text-white mb-6">Stay Connected</h4>
-            <form onSubmit={(e) => e.preventDefault()} className="relative">
-              <input 
-                type="email" 
-                placeholder="Email Address" 
-                className="w-full bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 rounded-full px-5 py-3 text-sm text-black dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:border-gray-300/30 dark:focus:border-white/30 outline-none transition-all" 
-              />
-              <button className="absolute right-1 top-1 bottom-1 px-4 bg-white text-black rounded-full text-[10px] font-black uppercase hover:bg-gray-200 transition-colors">
-                Join
-              </button>
-            </form>
+            <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed mb-4">
+              Need help with orders, sizing, or delivery? Reach our team directly.
+            </p>
+            <div className="flex gap-3">
+              <Link
+                href="/contact"
+                className="px-4 py-2 bg-white text-black rounded-full text-[10px] font-black uppercase hover:bg-gray-200 transition-colors"
+              >
+                Contact Us
+              </Link>
+            </div>
             <div className="flex gap-4 mt-6">
                {/* Placeholders for Social Icons */}
-              <div className="w-8 h-8 rounded-full bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 flex items-center justify-center hover:bg-white/10 dark:hover:bg-black/10 cursor-pointer transition-all">
+              <div className="w-8 h-8 rounded-full bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 flex items-center justify-center hover:bg-white/10 dark:hover:bg-black/10 cursor-pointer transition-all"  onClick={() => window.open('https://instagram.com/theaccelerateco', '_blank')}
+>
                 <span className="text-[10px] text-black dark:text-white italic">Ig</span>
               </div>
-              <div className="w-8 h-8 rounded-full bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 flex items-center justify-center hover:bg-white/10 dark:hover:bg-black/10 cursor-pointer transition-all">
-                <span className="text-[10px] text-black dark:text-white italic">Tw</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 flex items-center justify-center hover:bg-white/10 dark:hover:bg-black/10 cursor-pointer transition-all" onClick={() => window.location.href = 'mailto:accelerategrw@gmail.com'}>
+                <span className="text-[10px] text-black dark:text-white italic">Mail</span>
               </div>
             </div>
           </div>
@@ -71,8 +72,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Accelerate Studios. All rights reserved.
           </p>
           <div className="flex gap-6 text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold">
-            <Link href="/privacy" className="hover:text-black dark:hover:text-white">Privacy</Link>
-            <Link href="/terms" className="hover:text-black dark:hover:text-white">Terms</Link>
+            <Link href="/about" className="hover:text-black dark:hover:text-white">About</Link>
+            <Link href="/contact" className="hover:text-black dark:hover:text-white">Contact</Link>
           </div>
         </div>
       </div>

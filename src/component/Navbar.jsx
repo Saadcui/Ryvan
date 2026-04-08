@@ -36,8 +36,8 @@ export default function Navbar() {
         <div className="hidden sm:flex items-center gap-8">
           <Link href="/" className={linkStyle}>Home</Link>
           <Link href="/collection" className={linkStyle}>Collections</Link>
-          <Link href="/#footer" className={linkStyle}>Contact</Link>
-          <Link href="/#vision" className={linkStyle}>About</Link>
+          <Link href="/contact" className={linkStyle}>Contact</Link>
+          <Link href="/about" className={linkStyle}>About</Link>
         </div>
 
         {/* ACTIONS SECTION */}
