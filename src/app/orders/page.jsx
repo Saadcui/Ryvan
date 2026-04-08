@@ -91,7 +91,11 @@ export default function UserOrdersPage() {
                     <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
                       {o.items.map((item, idx) => (
                         <div key={idx} className="relative w-16 h-20 rounded-xl overflow-hidden bg-gray-900 border border-white/5 shrink-0">
-                           <Image src={item.image} alt={item.title} fill className="object-cover" unoptimized />
+                           {item.image ? (
+                             <Image src={item.image} alt={item.title} fill className="object-cover" />
+                           ) : (
+                             <div className="absolute inset-0 flex items-center justify-center text-gray-700 text-[9px] font-black uppercase">No Image</div>
+                           )}
                         </div>
                       ))}
                     </div>

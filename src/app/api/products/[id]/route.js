@@ -1,6 +1,7 @@
 import db from '@/lib/db';
 import Product from '@/models/products';
 import { NextResponse } from "next/server";
+import { adminOnly } from '@/middleware/admin';
 
 export async function GET(request, { params }) {
 try{
@@ -23,6 +24,9 @@ catch (error) {
 
 export async function DELETE(request, { params }) {
   try {
+    const admin = adminOnly(request);
+    if (admin && typeof admin.status === 'number') return admin;
+
     await db();
     const { id } = params;
     const deletedProduct = await Product.findByIdAndDelete(id);
@@ -38,19 +42,25 @@ export async function DELETE(request, { params }) {
 
 export async function PUT(request, { params }) {
   try {
+    const admin = adminOnly(request);
+    if (admin && typeof admin.status === 'number') return admin;
+
     await db();
     const { id } = params;
     const data = await request.json();
-    // Normalize sizes same as POST: support strings or objects
-    if (data.sizes && Array.isArray(data.sizes)) {
-      const globalStock = Number(data.stock) || 0;
-      data.sizes = data.sizes.map(s => {
-        if (typeof s === 'string') return { size: s, stock: globalStock };
-        return { size: s.size || String(s), stock: Number(s.stock || globalStock) };
+    const normalizedData = { ...data };
+    if (normalizedData.sizes && Array.isArray(normalizedData.sizes)) {
+      const globalStock = Number(normalizedData.stock) || 0;
+      normalizedData.sizes = normalizedData.sizes.map((sizeEntry) => {
+        if (typeof sizeEntry === 'string') {
+          return { size: sizeEntry.trim(), stock: globalStock };
+        }
+
+        return { size: String(sizeEntry.size || sizeEntry).trim(), stock: Number(sizeEntry.stock ?? globalStock) };
       });
     }
-    delete data.stock;
-    const updatedProduct = await Product.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+    delete normalizedData.stock;
+    const updatedProduct = await Product.findByIdAndUpdate(id, normalizedData, { new: true, runValidators: true });
     if (!updatedProduct) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }

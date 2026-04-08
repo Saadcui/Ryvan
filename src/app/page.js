@@ -2,6 +2,15 @@ import React from "react";
 import Hero from "../component/Hero.jsx";
 import RecentBanner from "../component/RecentBanner";
 
+export const metadata = {
+    title: 'Premium Streetwear & Footwear in Pakistan',
+    description:
+        'Discover Accelerate: premium streetwear, clothing, and footwear curated for everyday wear. Shop from Pakistan with a global audience in mind.',
+    alternates: {
+        canonical: '/',
+    },
+};
+
 export default function Home() {
     return (
         <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white">

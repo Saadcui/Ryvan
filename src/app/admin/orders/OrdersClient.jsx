@@ -142,7 +142,11 @@ export default function OrdersClient() {
                       <div className="flex -space-x-3 overflow-hidden">
                         {o.items.slice(0, 3).map((item, idx) => (
                           <div key={idx} className="relative w-8 h-8 rounded-full border-2 border-black bg-gray-900 overflow-hidden" title={`${item.title} (x${item.qty})`}>
-                            <Image src={item.image} alt={item.title} fill className="object-cover" unoptimized />
+                              {item.image ? (
+                                <Image src={item.image} alt={item.title} fill className="object-cover" />
+                              ) : (
+                                <div className="absolute inset-0 flex items-center justify-center text-gray-700 text-[7px] font-black uppercase">N/A</div>
+                              )}
                           </div>
                         ))}
                         {o.items.length > 3 && (

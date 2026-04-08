@@ -4,6 +4,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
+
 // --- CONFIGURATION: Size Categories ---
 const SIZE_CONFIG = {
   Topwear: ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'],
@@ -26,7 +28,9 @@ export default function AdminClient() {
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
   const [gender, setGender] = useState('');
-  const [imagesText, setImagesText] = useState('');
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [uploadingImages, setUploadingImages] = useState(false);
   
   // New: Multi-select sizes
   const [selectedSizes, setSelectedSizes] = useState([]);
@@ -70,6 +74,71 @@ export default function AdminClient() {
     }
   };
 
+  const onSelectImages = (e) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) {
+      setSelectedFiles([]);
+      return;
+    }
+
+    const nonImages = files.filter((file) => !file.type?.startsWith('image/'));
+    if (nonImages.length > 0) {
+      setError('Only image files are allowed.');
+      setSelectedFiles([]);
+      return;
+    }
+
+    const oversized = files.find((file) => file.size > MAX_IMAGE_SIZE);
+    if (oversized) {
+      setError(`Image "${oversized.name}" exceeds 2MB.`);
+      setSelectedFiles([]);
+      return;
+    }
+
+    setError('');
+    setSelectedFiles(files);
+  };
+
+  const uploadSelectedImages = async () => {
+    if (selectedFiles.length === 0) {
+      setError('Please choose at least one image file.');
+      return;
+    }
+
+    setUploadingImages(true);
+    setError('');
+
+    try {
+      const uploaded = [];
+
+      for (const file of selectedFiles) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data?.success || !data?.data?.url) {
+          throw new Error(data?.error || `Failed to upload ${file.name}`);
+        }
+
+        uploaded.push({
+          url: data.data.url,
+          name: file.name,
+        });
+      }
+
+      setUploadedImages(uploaded);
+    } catch (err) {
+      setError(err?.message || 'Image upload failed.');
+    } finally {
+      setUploadingImages(false);
+    }
+  };
+
   const onCreate = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -81,13 +150,19 @@ export default function AdminClient() {
       return;
     }
 
+    if (uploadedImages.length === 0) {
+      setError('Please upload at least one image before creating the product.');
+      setSaving(false);
+      return;
+    }
+
     const payload = {
       name,
       description,
       price: Number(price),
       category,
       Gender: gender,
-      images: imagesText.split('\n').filter(url => url.trim()).map(url => ({ url: url.trim() })),
+      images: uploadedImages.map((img) => ({ url: img.url })),
       // Build sizes as objects with stock per size
       sizes: selectedSizes.map(s => ({ size: s, stock: Number(sizesStock[s] || 0) }))
     };
@@ -102,7 +177,7 @@ export default function AdminClient() {
         if (res.ok) {
         // Reset Form
         setName(''); setDescription(''); setPrice(''); setCategory('');
-        setGender(''); setImagesText(''); setSelectedSizes([]);
+        setGender(''); setSelectedFiles([]); setUploadedImages([]); setSelectedSizes([]);
           setSizesStock({});
         fetchProducts();
       } else {
@@ -123,10 +198,8 @@ export default function AdminClient() {
 
   // --- DYNAMIC UI HELPERS ---
   const previewImage = useMemo(() => {
-    const img = imagesText.split('\n')[0]?.trim();
-    // BUG FIX: Only return if it looks like a valid URL to prevent runtime crash
-    return img && (img.startsWith('http') || img.startsWith('/')) ? img : null;
-  }, [imagesText]);
+    return uploadedImages[0]?.url || null;
+  }, [uploadedImages]);
 
   // Determine which sizes to show based on category
   const availableOptions = SIZE_CONFIG[category] || [];
@@ -283,15 +356,29 @@ export default function AdminClient() {
 
                 {/* Images */}
                 <div className="space-y-2">
-                  <label className="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em]">Image URLs</label>
-                  <textarea 
-                    value={imagesText} 
-                    onChange={e => setImagesText(e.target.value)} 
-                    className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-[10px] font-mono text-gray-800 dark:text-gray-300 outline-none focus:border-emerald-500 transition-all placeholder:text-gray-700" 
-                    placeholder={`https://...\nhttps://...`}
-                    rows={2}
+                  <label className="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em]">Product Images</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={onSelectImages}
+                    className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-3 text-[10px] text-gray-700 dark:text-gray-300 outline-none focus:border-emerald-500 transition-all file:bg-emerald-400 file:text-black file:border-0 file:rounded-lg file:px-3 file:py-2 file:mr-3 file:font-black file:uppercase file:tracking-wider"
                   />
-                  <p className="text-[9px] text-gray-600 text-right uppercase tracking-wider font-bold">One URL per line</p>
+                  <p className="text-[9px] text-gray-600 text-right uppercase tracking-wider font-bold">Images only, max 2MB each</p>
+
+                  {selectedFiles.length > 0 && (
+                    <div className="space-y-2">
+                      <div className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Selected: {selectedFiles.length}</div>
+                      <button
+                        type="button"
+                        onClick={uploadSelectedImages}
+                        disabled={uploadingImages}
+                        className="w-full py-3 bg-emerald-400 text-black rounded-xl text-[10px] font-black uppercase tracking-[0.2em] disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {uploadingImages ? 'Uploading...' : 'Upload To Cloudinary'}
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 {/* Image Preview - FIXED: Added check for valid URL */}
@@ -299,15 +386,24 @@ export default function AdminClient() {
                   <div className="relative group rounded-xl overflow-hidden border border-gray-200/30 dark:border-white/10">
                     <Image 
                       src={previewImage} 
-                      alt="Preview" 
-                      width={600} 
-                      height={240} 
-                      unoptimized 
+                      alt={`${name || 'Product'} image preview`}
+                      width={600}
+                      height={360}
                       className="h-40 w-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" 
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <span className="text-black text-[9px] font-black uppercase tracking-widest bg-white/80 backdrop-blur px-3 py-1 rounded-full shadow-lg">Preview</span>
                     </div>
+                  </div>
+                )}
+
+                {uploadedImages.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {uploadedImages.map((img) => (
+                      <span key={img.url} className="text-[9px] bg-white/5 border border-gray-200/30 dark:border-white/10 px-2 py-1 rounded font-bold text-gray-600 dark:text-gray-300">
+                        Uploaded: {img.name}
+                      </span>
+                    ))}
                   </div>
                 )}
 
@@ -395,7 +491,6 @@ export default function AdminClient() {
                                     alt={p.name || 'Product'}
                                     fill
                                     className="object-cover"
-                                    unoptimized
                                   />
                                 ) : (
                                   <div className="w-full h-full flex items-center justify-center text-gray-700 text-[8px] font-black">N/A</div>
