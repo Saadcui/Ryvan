@@ -42,7 +42,7 @@ export default function AdminClient() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch('/api/products');
+      const res = await fetch('/api/products?all=1&limit=500&fields=admin&sort=latest');
       const data = await res.json();
       if (data.success) setProducts(data.data);
     } catch (err) { setError("Failed to load catalog."); }

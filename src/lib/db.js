@@ -1,19 +1,37 @@
 import mongoose from "mongoose";
 
-let isConnected = false;
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  throw new Error("MONGO_URI is missing");
+}
+
+const globalWithMongoose = globalThis;
+
+let cached = globalWithMongoose.__mongoose;
+
+if (!cached) {
+  cached = globalWithMongoose.__mongoose = { conn: null, promise: null };
+}
 
 export default async function db() {
-  if (isConnected) return;
+  if (cached.conn) return cached.conn;
 
-  if (!process.env.MONGO_URI) {
-    throw new Error("MONGO_URI is missing");
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGO_URI, {
+      maxPoolSize: 10,
+      minPoolSize: 0,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+      bufferCommands: false,
+    });
   }
 
   try {
-    const db = await mongoose.connect(process.env.MONGO_URI);
-    isConnected = db.connections[0].readyState;
-    console.log("✅ MongoDB connected");
+    cached.conn = await cached.promise;
+    return cached.conn;
   } catch (error) {
-    console.error("❌ MongoDB connection failed:", error.message);
+    cached.promise = null;
+    throw error;
   }
 }

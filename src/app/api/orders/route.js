@@ -5,6 +5,7 @@ import Product from '@/models/products';
 import { cookies } from 'next/headers';
 import { verifyToken } from '@/lib/jwt';
 import { calculateShipping, normalizeCheckoutPayload, normalizeShippingMethod, trimValue } from '@/lib/checkout';
+import { limitByIp } from '@/lib/rateLimit';
 
 async function restoreInventory(reservedItems) {
   for (const item of reservedItems) {
@@ -19,6 +20,20 @@ export async function POST(req) {
   let reservedItems = [];
 
   try {
+    const rate = limitByIp(req, 'orders:create', 12, 60 * 1000);
+    if (rate.limited) {
+      return NextResponse.json(
+        { success: false, error: 'Too many order attempts. Please retry shortly.' },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rate.retryAfter),
+            'X-RateLimit-Remaining': String(rate.remaining),
+          },
+        }
+      );
+    }
+
     await dbConnect();
 
     const cookieStore = await cookies();
@@ -41,7 +56,7 @@ export async function POST(req) {
 
     const { customer, items } = normalizedBody;
     const productIds = [...new Set(items.map((item) => item.productId))];
-    const products = await Product.find({ _id: { $in: productIds } }).lean();
+    const products = await Product.find({ _id: { $in: productIds } }, 'name price images sizes').lean();
     const productsById = new Map(products.map((product) => [String(product._id), product]));
     const normalizedItems = [];
 

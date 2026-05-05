@@ -4,12 +4,27 @@ import User from "@/models/User";
 import bcrypt from "bcryptjs";
 import { signToken } from "@/lib/jwt";
 import { NextResponse } from "next/server";
+import { limitByIp } from "@/lib/rateLimit";
 
 function trimValue(value) {
   return typeof value === 'string' ? value.trim() : '';
 }
 
 export async function POST(req) {
+  const rate = limitByIp(req, 'auth:login', 10, 60 * 1000);
+  if (rate.limited) {
+    return NextResponse.json(
+      { message: "Too many login attempts. Please try again shortly." },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(rate.retryAfter),
+          'X-RateLimit-Remaining': String(rate.remaining),
+        },
+      }
+    );
+  }
+
   await db();
   const { email, password } = await req.json();
   const resolvedEmail = trimValue(email);

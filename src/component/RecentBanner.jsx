@@ -23,11 +23,11 @@ export default function RecentBanner() {
   useEffect(() => {
     let mounted = true;
     setIsLoading(true);
-    fetch('/api/products')
+    fetch('/api/products?limit=10&sort=latest&fields=card')
       .then(r => r.json())
       .then(d => {
         if (!mounted) return;
-        if (d.success && Array.isArray(d.data)) setItems(d.data.slice(0, 10));
+        if (d.success && Array.isArray(d.data)) setItems(d.data);
       })
       .catch(() => {})
       .finally(() => {

@@ -24,7 +24,7 @@ export default function UserOrdersPage() {
 
   const fetchUserOrders = async () => {
     try {
-      const res = await fetch('/api/orders/user');
+      const res = await fetch('/api/orders/user?page=1&limit=50');
       const data = await res.json();
       if (data.success) {
         setOrders(data.data);

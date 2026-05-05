@@ -15,7 +15,7 @@ export default function OrdersClient() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch('/api/admin/orders');
+      const res = await fetch('/api/admin/orders?page=1&limit=100');
       const data = await res.json();
       if (data.success) {
         setOrders(data.data);

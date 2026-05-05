@@ -4,7 +4,12 @@ import Order from '@/models/Order';
 import { verifyToken } from '@/lib/jwt';
 import { cookies } from 'next/headers';
 
-export async function GET() {
+function toPositiveInt(value, fallback) {
+  const parsed = Number.parseInt(value || '', 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+export async function GET(req) {
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get('token')?.value;
@@ -15,9 +20,33 @@ export async function GET() {
     if (!user || user.role !== 'admin') return NextResponse.json({ success: false, error: 'Forbidden' }, { status: 403 });
 
     await dbConnect();
-    const orders = await Order.find({}).sort({ createdAt: -1 });
 
-    return NextResponse.json({ success: true, data: orders });
+    const { searchParams } = new URL(req.url);
+    const page = toPositiveInt(searchParams.get('page'), 1);
+    const requestedLimit = toPositiveInt(searchParams.get('limit'), 50);
+    const limit = Math.min(requestedLimit, 100);
+    const skip = (page - 1) * limit;
+
+    const [orders, total] = await Promise.all([
+      Order.find({})
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      Order.countDocuments({}),
+    ]);
+
+    return NextResponse.json({
+      success: true,
+      data: orders,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.max(1, Math.ceil(total / limit)),
+        hasMore: page * limit < total,
+      },
+    });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }

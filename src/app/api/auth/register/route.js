@@ -3,6 +3,7 @@ import User from "@/models/User";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { signToken } from '@/lib/jwt';
+import { limitByIp } from '@/lib/rateLimit';
 
 function trimValue(value) {
   return typeof value === 'string' ? value.trim() : '';
@@ -13,6 +14,20 @@ function isValidEmail(email) {
 }
 
 export async function POST(req) {
+  const rate = limitByIp(req, 'auth:register', 5, 60 * 1000);
+  if (rate.limited) {
+    return NextResponse.json(
+      { message: 'Too many registration attempts. Please try again shortly.' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(rate.retryAfter),
+          'X-RateLimit-Remaining': String(rate.remaining),
+        },
+      }
+    );
+  }
+
   await db();
   const { name, email, password } = await req.json();
   const resolvedName = trimValue(name);

@@ -3,23 +3,84 @@ import db from '@/lib/db';
 import Product from '@/models/products';
 import { adminOnly } from '@/middleware/admin';
 
+function toPositiveInt(value, fallback) {
+  const parsed = Number.parseInt(value || '', 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function getSort(sortParam) {
+  switch (sortParam) {
+    case 'price_asc':
+      return { price: 1, createdAt: -1 };
+    case 'price_desc':
+      return { price: -1, createdAt: -1 };
+    default:
+      return { createdAt: -1 };
+  }
+}
+
+function getProjection(fieldsParam) {
+  switch (fieldsParam) {
+    case 'card':
+      return 'name price category Gender images sizes createdAt';
+    case 'admin':
+      return 'name description price category Gender images sizes createdAt';
+    default:
+      return '';
+  }
+}
+
 export async function GET(req) {
   try {
     await db();
-    
-    // Support filtering by IDs: /api/products?ids=id1,id2,id3
+
     const { searchParams } = new URL(req.url);
     const idsParam = searchParams.get('ids');
-    
+    const fieldsParam = searchParams.get('fields');
+    const projection = getProjection(fieldsParam);
+
     let products;
     if (idsParam) {
       const ids = idsParam.split(',').filter(Boolean);
-      products = await Product.find({ _id: { $in: ids } });
+      products = await Product.find({ _id: { $in: ids } }, projection).lean();
     } else {
-      products = await Product.find({});
+      const all = searchParams.get('all') === '1';
+      const page = toPositiveInt(searchParams.get('page'), 1);
+      const requestedLimit = toPositiveInt(searchParams.get('limit'), all ? 500 : 24);
+      const limit = Math.min(requestedLimit, all ? 500 : 100);
+      const skip = (page - 1) * limit;
+      const category = searchParams.get('category');
+      const gender = searchParams.get('gender');
+      const sort = getSort(searchParams.get('sort'));
+
+      const query = {};
+      if (category && category !== 'ALL') query.category = category;
+      if (gender && gender !== 'ALL') query.Gender = gender;
+
+      const [rows, total] = await Promise.all([
+        Product.find(query, projection).sort(sort).skip(skip).limit(limit).lean(),
+        Product.countDocuments(query),
+      ]);
+
+      const response = NextResponse.json({
+        success: true,
+        data: rows,
+        meta: {
+          page,
+          limit,
+          total,
+          totalPages: Math.max(1, Math.ceil(total / limit)),
+          hasMore: page * limit < total,
+        },
+      });
+
+      response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+      return response;
     }
-    
-    return NextResponse.json({ success: true, data: products });
+
+    const response = NextResponse.json({ success: true, data: products });
+    response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+    return response;
   } catch (error) {
     return NextResponse.json({ success: false, error: error?.message || 'Failed to load products' }, { status: 500 });
   }

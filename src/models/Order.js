@@ -38,6 +38,10 @@ const OrderSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+OrderSchema.index({ userId: 1, createdAt: -1 });
+OrderSchema.index({ createdAt: -1 });
+OrderSchema.index({ status: 1, createdAt: -1 });
+
 // Force re-register: clear cache so schema changes take effect without full server restart
 if (mongoose.models.Order) delete mongoose.models.Order;
 export default mongoose.model('Order', OrderSchema);
