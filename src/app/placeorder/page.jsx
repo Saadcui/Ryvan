@@ -178,7 +178,7 @@ export default function PlaceOrderPage() {
                     onChange={handleInputChange}
                     required
                     className="w-full bg-white/5 dark:bg-black border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-4 text-sm font-bold focus:border-emerald-500 outline-none transition-all"
-                    placeholder="you@accelerate.com"
+                    placeholder="you@ryvan.com"
                   />
                 </div>
                 <label className="flex items-center gap-3 cursor-pointer group">

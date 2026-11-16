@@ -45,14 +45,14 @@ export default function Login() {
 
         {/* LEFT COLUMN: Branding & Text */}
         <div className='w-full md:w-1/2 flex flex-col justify-between p-6 md:p-10 text-black dark:text-white z-10 mb-6 md:mb-0'>
-          <h2 className='text-3xl font-extrabold tracking-wide uppercase'>Accelerate</h2>
+          <h2 className='text-3xl font-extrabold tracking-wide uppercase'>Ryvan</h2>
 
           <div className='mt-6 md:mt-0'>
             <h1 className='text-4xl md:text-5xl font-bold leading-tight mb-4'>
               Move Fast. <br /> Dress Bold.
             </h1>
             <p className='text-gray-300 text-sm md:text-base leading-relaxed max-w-sm'>
-              Accelerate isn’t just clothing—it’s a lifestyle. Designed for those who chase adventure, embrace individuality, and never settle for ordinary.
+              Ryvan isn’t just clothing—it’s a lifestyle. Designed for those who chase adventure, embrace individuality, and never settle for ordinary.
             </p>
           </div>
 

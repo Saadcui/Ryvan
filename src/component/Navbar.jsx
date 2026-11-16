@@ -28,7 +28,7 @@ export default function Navbar() {
         {/* LOGO SECTION */}
         <Link href="/" className="flex items-center gap-2 group">
            <h1 className='text-xl font-extrabold tracking-tighter uppercase text-black dark:text-white group-hover:scale-105 transition-transform'>
-             Accelerate
+             Ryvan
            </h1>
         </Link>
 
@@ -100,7 +100,7 @@ export default function Navbar() {
       <div className={`absolute top-0 right-0 h-full w-full max-w-xs bg-white/95 dark:bg-black/95 border-l border-gray-200 dark:border-white/10 p-8 transition-transform duration-500 ${visible ? 'translate-x-0' : 'translate-x-full'}`}>
           
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-black dark:text-white font-black uppercase tracking-widest">Accelerate</h2>
+            <h2 className="text-black dark:text-white font-black uppercase tracking-widest">Ryvan</h2>
             <button onClick={() => setVisible(false)} className="p-2 bg-white/5 dark:bg-black/5 rounded-full ring-1 ring-gray-200 dark:ring-white/10">
               <Image src={assets.cross_icon} alt="close" width={16} height={16} className="brightness-200" />
             </button>

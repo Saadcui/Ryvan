@@ -210,7 +210,7 @@ export default function OrdersClient() {
                 {/* Branding - visible on print */}
                 <div className="hidden print:flex justify-between items-end border-b-2 border-black pb-6">
                   <div>
-                    <h1 className="text-4xl font-black uppercase italic tracking-tighter">Accelerate</h1>
+                    <h1 className="text-4xl font-black uppercase italic tracking-tighter">Ryvan</h1>
                     <p className="text-[10px] font-bold uppercase tracking-widest mt-1">Official Packing Slip</p>
                   </div>
                   <div className="text-right font-mono text-xs">
@@ -231,7 +231,7 @@ export default function OrdersClient() {
                    <div className="space-y-4">
                       <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500 border-b border-black/10 pb-1">Logistics</h4>
                       <div className="space-y-2">
-                        <p className="text-xs font-black uppercase tracking-widest">Carrier: <span className="font-bold italic">Accelerate Direct</span></p>
+                        <p className="text-xs font-black uppercase tracking-widest">Carrier: <span className="font-bold italic">Ryvan Direct</span></p>
                         <p className="text-xs font-black uppercase tracking-widest">Protocol: <span className="font-bold italic">{selectedOrder.paymentMethod}</span></p>
                         <p className="text-xs font-black uppercase tracking-widest">Method: <span className="font-bold italic">{selectedOrder.shippingMethod} Shipping</span></p>
                       </div>

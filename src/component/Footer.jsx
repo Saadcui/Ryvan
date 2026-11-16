@@ -13,7 +13,7 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="space-y-4">
-            <h4 className="text-2xl font-black uppercase tracking-tighter text-black dark:text-white">Accelerate</h4>
+            <h4 className="text-2xl font-black uppercase tracking-tighter text-black dark:text-white">Ryvan</h4>
             <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
               Precision crafted apparel for those moving at the speed of tomorrow. Excellence in every stitch.
             </p>
@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
             <div className="flex gap-4 mt-6">
                {/* Placeholders for Social Icons */}
-              <div className="w-8 h-8 rounded-full bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 flex items-center justify-center hover:bg-white/10 dark:hover:bg-black/10 cursor-pointer transition-all"  onClick={() => window.open('https://instagram.com/theaccelerateco', '_blank')}
+              <div className="w-8 h-8 rounded-full bg-white/5 dark:bg-black/5 border border-gray-200/30 dark:border-white/10 flex items-center justify-center hover:bg-white/10 dark:hover:bg-black/10 cursor-pointer transition-all"  onClick={() => window.open('https://instagram.com/ryvan.pak', '_blank')}
 >
                 <span className="text-[10px] text-black dark:text-white italic">Ig</span>
               </div>
@@ -69,7 +69,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-gray-200/30 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold">
-            © {new Date().getFullYear()} Accelerate Studios. All rights reserved.
+            © {new Date().getFullYear()} Ryvan Studios. All rights reserved.
           </p>
           <div className="flex gap-6 text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-widest font-bold">
             <Link href="/about" className="hover:text-black dark:hover:text-white">About</Link>

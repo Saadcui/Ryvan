@@ -7,7 +7,7 @@ function Hero() {
   return (
     <div className="relative w-full min-h-[80vh] flex items-center justify-center px-4 overflow-hidden">
       
-      {/* 1. BACKGROUND AESTHETIC - Matching your Accelerate theme */}
+      {/* 1. BACKGROUND AESTHETIC - Matching your Ryvan theme */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -25,7 +25,7 @@ function Hero() {
             </div>
             
              <h1 className="text-5xl md:text-7xl font-extrabold text-black dark:text-white tracking-tighter leading-[0.9] italic uppercase">
-              Accelerate <br /> 
+              Ryvan <br />
               <span className="text-gray-600 dark:text-gray-400 not-italic">Your Pace</span>
             </h1>
 

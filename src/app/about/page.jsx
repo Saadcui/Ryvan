@@ -3,10 +3,10 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Our Story',
   description:
-    'Learn the story behind Accelerate, a Pakistan-based streetwear and footwear brand focused on quality, fit, and everyday wearability.',
+    'Learn the story behind Ryvan, a Pakistan-based streetwear and footwear brand focused on quality, fit, and everyday wearability.',
   keywords: [
-    'Accelerate story',
-    'about Accelerate',
+    'Ryvan story',
+    'about Ryvan',
     'streetwear brand Pakistan',
     'premium clothing Pakistan',
     'fashion brand story',
@@ -15,9 +15,9 @@ export const metadata = {
     canonical: '/about',
   },
   openGraph: {
-    title: 'Our Story | Accelerate',
+    title: 'Our Story | Ryvan',
     description:
-      'Discover how Accelerate curates premium streetwear and footwear with a focus on craftsmanship, wearability, and modern style.',
+      'Discover how Ryvan curates premium streetwear and footwear with a focus on craftsmanship, wearability, and modern style.',
     url: '/about',
   },
 };
@@ -36,7 +36,7 @@ export default function AboutPage() {
               Designed to<span className="text-gray-500 dark:text-gray-400 not-italic"> Last </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
-              Accelerate was shaped around a simple idea: premium streetwear should feel sharp, last longer, and still fit into real life. We curate apparel and footwear that balance modern design with practical comfort, so every piece can move from morning routines to late-night plans without losing its edge.
+              Ryvan was shaped around a simple idea: premium streetwear should feel sharp, last longer, and still fit into real life. We curate apparel and footwear that balance modern design with practical comfort, so every piece can move from morning routines to late-night plans without losing its edge.
             </p>
           </div>
         </div>
@@ -50,7 +50,7 @@ export default function AboutPage() {
                 Why we exist
               </h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                The market is full of products that look good online but fall short in the hand. We built Accelerate to focus on the details that matter after checkout: stitching, drape, fabric weight, and how a piece feels after repeated wear.
+                The market is full of products that look good online but fall short in the hand. We built Ryvan to focus on the details that matter after checkout: stitching, drape, fabric weight, and how a piece feels after repeated wear.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 Our selection process is intentionally narrow. If something does not meet our standard for quality, silhouette, or versatility, it does not make it into the collection.
@@ -89,7 +89,7 @@ export default function AboutPage() {
                   Our team reviews every product with a focus on everyday relevance: Is the fit versatile? Does the material hold up? Can it be worn across seasons? If the answer is yes, it belongs here.
                 </p>
                 <p>
-                  Accelerate is for people who want better basics, stronger details, and a more reliable buying experience in Pakistan and beyond.
+                  Ryvan is for people who want better basics, stronger details, and a more reliable buying experience in Pakistan and beyond.
                 </p>
               </div>
             </div>

@@ -43,7 +43,7 @@ export default function ProductClient({ product }) {
 
       <main className="relative w-full max-w-6xl bg-white/5 backdrop-blur-2xl rounded-[40px] border border-gray-200/30 dark:border-white/10 shadow-2xl overflow-hidden p-6 md:p-10 text-black dark:text-white">
         <div className="flex justify-between items-center mb-10 border-b border-gray-200/30 dark:border-white/10 pb-6">
-          <h2 className="text-xl md:text-2xl font-extrabold tracking-wide uppercase text-black dark:text-white">Accelerate</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold tracking-wide uppercase text-black dark:text-white">Ryvan</h2>
           <span className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-widest">{product.category}</span>
         </div>
 

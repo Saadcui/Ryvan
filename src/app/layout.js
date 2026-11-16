@@ -10,13 +10,13 @@ import { ToastProvider } from '../component/Toast';
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
-    default: 'Accelerate — Premium Streetwear & Footwear in Pakistan',
-    template: '%s | Accelerate',
+    default: 'Ryvan — Premium Streetwear & Footwear in Pakistan',
+    template: '%s | Ryvan',
   },
   description:
-    'Shop premium clothing and footwear from Accelerate. New arrivals, curated streetwear aesthetic, and worldwide reach from Pakistan.',
+    'Shop premium clothing and footwear from Ryvan. New arrivals, curated streetwear aesthetic, and worldwide reach from Pakistan.',
   keywords: [
-    'Accelerate',
+    'Ryvan',
     'streetwear',
     'clothing',
     'footwear',
@@ -33,17 +33,17 @@ export const metadata = {
   },
   openGraph: {
     type: 'website',
-    siteName: 'Accelerate',
-    title: 'Accelerate — Premium Streetwear & Footwear in Pakistan',
+    siteName: 'Ryvan',
+    title: 'Ryvan — Premium Streetwear & Footwear in Pakistan',
     description:
-      'Shop premium clothing and footwear from Accelerate. Curated streetwear aesthetic with Pakistan and global customers in mind.',
+      'Shop premium clothing and footwear from Ryvan. Curated streetwear aesthetic with Pakistan and global customers in mind.',
     url: '/',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Accelerate — Premium Streetwear & Footwear in Pakistan',
+    title: 'Ryvan — Premium Streetwear & Footwear in Pakistan',
     description:
-      'Shop premium clothing and footwear from Accelerate. Curated streetwear aesthetic with Pakistan and global customers in mind.',
+      'Shop premium clothing and footwear from Ryvan. Curated streetwear aesthetic with Pakistan and global customers in mind.',
   },
 };
 

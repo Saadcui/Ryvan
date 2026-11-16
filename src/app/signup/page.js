@@ -52,7 +52,7 @@ export default function SignUp() {
         {/* LEFT COLUMN: Branding & Text */}
         <div className='w-full md:w-1/2 flex flex-col justify-between p-6 md:p-10 text-black dark:text-white z-10'>
           {/* Logo Text */}
-          <h2 className='text-3xl font-extrabold tracking-wide uppercase'>Accelerate</h2>
+          <h2 className='text-3xl font-extrabold tracking-wide uppercase'>Ryvan</h2>
           
           {/* Middle Content */}
           <div className='mt-10 md:mt-0'>
@@ -60,7 +60,7 @@ export default function SignUp() {
               Move Fast. <br /> Dress Bold.
             </h1>
             <p className='text-gray-300 text-sm leading-relaxed max-w-sm'>
-              Accelerate isn’t just clothing—it’s a lifestyle. Designed for those who chase adventure, embrace individuality, and never settle for ordinary. Our collection blends bold design, ultimate comfort, and unmatched quality—so you can look as fast as you feel.  
+              Ryvan isn’t just clothing—it’s a lifestyle. Designed for those who chase adventure, embrace individuality, and never settle for ordinary.
             </p>
           </div>
 

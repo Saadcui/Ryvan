@@ -11,7 +11,7 @@ function truncate(text, maxLen) {
 
 function productMetaDescription(product) {
   const base = product?.description ? truncate(product.description, 120) : '';
-  const tail = `Shop ${product?.category || 'premium'} styles in Pakistan and worldwide from Accelerate.`;
+  const tail = `Shop ${product?.category || 'premium'} styles in Pakistan and worldwide from Ryvan.`;
   if (!base) return tail;
   return truncate(`${base} ${tail}`, 160);
 }

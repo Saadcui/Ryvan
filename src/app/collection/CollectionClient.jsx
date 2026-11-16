@@ -28,7 +28,7 @@ export default function CollectionClient({ initialProducts }) {
       <div className="relative z-10 flex flex-col lg:flex-row min-h-screen">
         <aside className="w-full lg:w-72 p-6 lg:p-10 lg:h-screen lg:sticky lg:top-0 bg-white/5 dark:bg-black/5 backdrop-blur-xl border-b lg:border-b-0 lg:border-r border border-gray-200/30 dark:border-white/10">
           <div className="mb-10">
-            <h2 className="text-2xl font-extrabold traking-tighter uppercase mb-2">Accelerate</h2>
+            <h2 className="text-2xl font-extrabold traking-tighter uppercase mb-2">Ryvan</h2>
             <p className="text-[10px] text-gray-500 tracking-[0.2em] uppercase">Collections</p>
           </div>
 

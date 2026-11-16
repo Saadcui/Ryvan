@@ -1,7 +1,7 @@
 export const metadata = {
 	title: 'Collection — Streetwear & Footwear in Pakistan',
 	description:
-		'Explore Accelerate’s collection of premium streetwear, clothing, and footwear. Curated styles for Pakistan and global shoppers.',
+		'Explore Ryvan’s collection of premium streetwear, clothing, and footwear. Curated styles for Pakistan and global shoppers.',
 	alternates: {
 		canonical: '/collection',
 	},

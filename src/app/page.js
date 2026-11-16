@@ -5,7 +5,7 @@ import RecentBanner from "../component/RecentBanner";
 export const metadata = {
     title: 'Premium Streetwear & Footwear in Pakistan',
     description:
-        'Discover Accelerate: premium streetwear, clothing, and footwear curated for everyday wear. Shop from Pakistan with a global audience in mind.',
+        'Discover Ryvan: premium streetwear, clothing, and footwear curated for everyday wear. Shop from Pakistan with a global audience in mind.',
     alternates: {
         canonical: '/',
     },
@@ -35,7 +35,7 @@ export default function Home() {
                         Acc<span className="text-gray-600">elerate</span>
                     </h2>
                     <p className="text-gray-400 text-lg leading-relaxed font-medium">
-                        Accelerate is not just a clothing brand. It bring together premium garments and 
+                        Ryvan is not just a clothing brand. It bring together premium garments and
                         footwear chosen for their design integrity, material quality, and versatility.
                         Every product is selected to meet a higher standard pieces that move effortlessly between street, 
                         lifestyle, and everyday wear.
@@ -66,7 +66,7 @@ export default function Home() {
                             Premium Build
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            Every product on Accelerate is hand-selected for fabric weight, fit, and finish—ensuring a premium look and feel across every category.
+                            Every product on Ryvan is hand-selected for fabric weight, fit, and finish—ensuring a premium look and feel across every category.
                         </p>
                     </div>
 
@@ -145,7 +145,7 @@ export default function Home() {
                             <h3 className="text-3xl font-black italic uppercase mb-4">Quality <br/> Assurance</h3>
                             <p className="text-gray-400 text-sm leading-relaxed mb-10">
                                 Before any piece reaches your hands, it undergoes a final manual inspection at our 
-                                distribution center. Accelerate is your destination for elevated clothing—curated 
+                                distribution center. Ryvan is your destination for elevated clothing—curated
                                 to move with you.
                             </p>
                             

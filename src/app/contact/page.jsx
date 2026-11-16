@@ -4,21 +4,21 @@ import ContactForm from './ContactForm';
 export const metadata = {
   title: 'Contact',
   description:
-    'Contact Accelerate for order support, product questions, shipping updates, and business inquiries in Pakistan and worldwide.',
+    'Contact Ryvan for order support, product questions, shipping updates, and business inquiries in Pakistan and worldwide.',
   keywords: [
-    'contact Accelerate',
+    'contact Ryvan',
     'streetwear customer support',
     'fashion support Pakistan',
-    'order help Accelerate',
+    'order help Ryvan',
     'premium clothing contact',
   ],
   alternates: {
     canonical: '/contact',
   },
   openGraph: {
-    title: 'Contact | Accelerate',
+    title: 'Contact | Ryvan',
     description:
-      'Reach out to Accelerate for product advice, order support, shipping questions, and collaboration inquiries.',
+      'Reach out to Ryvan for product advice, order support, shipping questions, and collaboration inquiries.',
     url: '/contact',
   },
 };
@@ -52,7 +52,7 @@ export default function ContactPage() {
               Let’s <span className="text-gray-500 dark:text-gray-400 not-italic">talk</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-              Whether you need help with an order, want product advice, or are exploring a collaboration, Accelerate is easy to reach. We keep support simple, fast, and human.
+              Whether you need help with an order, want product advice, or are exploring a collaboration, Ryvan is easy to reach. We keep support simple, fast, and human.
             </p>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                 Accerate Story
               </h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Accelerate provides premium streetwear customer support for shoppers looking for fit advice, stock availability, delivery information, and product recommendations. If you are browsing premium clothing in Pakistan or need help with an existing order, our contact page is the fastest way to reach us.
+                Ryvan provides premium streetwear customer support for shoppers looking for fit advice, stock availability, delivery information, and product recommendations. If you are browsing premium clothing in Pakistan or need help with an existing order, our contact page is the fastest way to reach us.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
                 <Link href="/collection" className="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[11px] hover:bg-gray-200 transition-colors">
