@@ -76,10 +76,10 @@ export default function OrdersClient() {
         <div className="mb-10 border-b border-gray-200/30 dark:border-white/10 pb-6 flex justify-between items-end print:hidden">
           <div>
             <h1 className="text-4xl font-black italic uppercase tracking-tighter text-black dark:text-white">
-              Order <span className="text-gray-600 dark:text-gray-400 not-italic">Logistics</span>
+              Order <span className="text-gray-600 dark:text-gray-400 not-italic">Management</span>
             </h1>
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
-                Order Tracking & Management System
+                Order Tracking and Management
             </p>
           </div>
           <Link href="/admin" className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">
@@ -96,8 +96,8 @@ export default function OrdersClient() {
         <div className="bg-white/5 dark:bg-black/5 backdrop-blur-xl rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden shadow-2xl min-h-[600px] print:hidden">
           <div className="p-8 border-b border-gray-200/30 dark:border-white/10 flex justify-between items-center">
             <div>
-              <h2 className="text-lg font-black uppercase tracking-widest italic">Order Matrix</h2>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Real-time Transmission Monitor</p>
+              <h2 className="text-lg font-black uppercase tracking-widest italic">Order Overview</h2>
+              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Live order status and customer details</p>
             </div>
           </div>
 
@@ -108,10 +108,10 @@ export default function OrdersClient() {
                   <th className="px-6 py-5 pl-8">Order ID</th>
                   <th className="px-6 py-5">Customer</th>
                   <th className="px-6 py-5">Location</th>
-                  <th className="px-6 py-5">Cargo</th>
+                  <th className="px-6 py-5">Items</th>
                   <th className="px-6 py-5">Value</th>
                   <th className="px-6 py-5">Status</th>
-                  <th className="px-6 py-5 text-right pr-8">Protocol</th>
+                  <th className="px-6 py-5 text-right pr-8">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200/5 dark:divide-white/5">
@@ -123,7 +123,7 @@ export default function OrdersClient() {
                     ))
                 ) : orders.length === 0 ? (
                   <tr>
-                    <td colSpan="7" className="px-6 py-32 text-center text-gray-600 uppercase font-black tracking-widest text-xs">No Transmissions Logged</td>
+                    <td colSpan="7" className="px-6 py-32 text-center text-gray-600 uppercase font-black tracking-widest text-xs">No orders found</td>
                   </tr>
                 ) : orders.map((o) => (
                   <tr key={o._id} className="hover:bg-white/5 dark:hover:bg-black/5 transition-colors group cursor-pointer" onClick={() => setSelectedOrder(o)}>
@@ -229,10 +229,10 @@ export default function OrdersClient() {
                       <p className="text-xs font-mono text-gray-500">{selectedOrder.email}</p>
                    </div>
                    <div className="space-y-4">
-                      <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500 border-b border-black/10 pb-1">Logistics</h4>
+                      <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500 border-b border-black/10 pb-1">Delivery Details</h4>
                       <div className="space-y-2">
                         <p className="text-xs font-black uppercase tracking-widest">Carrier: <span className="font-bold italic">Ryvan Direct</span></p>
-                        <p className="text-xs font-black uppercase tracking-widest">Protocol: <span className="font-bold italic">{selectedOrder.paymentMethod}</span></p>
+                        <p className="text-xs font-black uppercase tracking-widest">Payment: <span className="font-bold italic">{selectedOrder.paymentMethod}</span></p>
                         <p className="text-xs font-black uppercase tracking-widest">Method: <span className="font-bold italic">{selectedOrder.shippingMethod} Shipping</span></p>
                       </div>
                       <div className="pt-6">
@@ -245,7 +245,7 @@ export default function OrdersClient() {
                 </div>
 
                 <div className="space-y-4">
-                   <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500 border-b border-black/10 pb-1">Cargo Manifesto</h4>
+                   <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500 border-b border-black/10 pb-1">Order Items</h4>
                    <div className="space-y-2">
                       {selectedOrder.items.map((it, i) => (
                         <div key={i} className="flex justify-between items-center py-2 border-b border-black/5">
@@ -264,11 +264,11 @@ export default function OrdersClient() {
 
                 <div className="flex justify-between items-end border-t-2 border-black pt-6">
                    <div className="text-[9px] font-bold text-gray-400 uppercase leading-none italic max-w-xs">
-                     By processing this slip, you verify that the cargo listed above has been inspected and approved for deployment.
+                     By processing this packing slip, you confirm that the items listed above have been checked and approved for dispatch.
                    </div>
                    <div className="text-right">
                       <div className="flex justify-between gap-8 text-[10px] font-black uppercase text-gray-500">
-                        <span>Total Liability</span>
+                        <span>Order Total</span>
                         <span>PKR</span>
                       </div>
                       <div className="text-4xl font-black italic tracking-tighter mt-1">Rs {selectedOrder.total.toLocaleString()}</div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { assets } from '../assets/assets.js';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -20,18 +19,18 @@ function Hero() {
             <div className="flex items-center gap-3">
               <span className="w-10 h-px bg-emerald-400"></span>
               <p className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400">
-                Performance Series 2026
+                New Season Collection
               </p>
             </div>
             
              <h1 className="text-5xl md:text-7xl font-extrabold text-black dark:text-white tracking-tighter leading-[0.9] italic uppercase">
               Ryvan <br />
-              <span className="text-gray-600 dark:text-gray-400 not-italic">Your Pace</span>
+              <span className="text-gray-600 dark:text-gray-400 not-italic">Wear Your Way</span>
             </h1>
 
             <p className="max-w-md text-sm text-gray-400 leading-relaxed font-medium">
-              Precision-engineered apparel designed for high-velocity movement. 
-              Experience the fusion of glass-morphism aesthetics and elite performance fabric.
+              Premium streetwear, clothing, and footwear selected for a confident everyday wardrobe.
+              Discover modern silhouettes, quality materials, and effortless style from Pakistan.
             </p>
 
             <div className="flex items-center gap-6 pt-4">
@@ -42,7 +41,7 @@ function Hero() {
                 Shop Collection
               </Link>
               <div className="flex items-center gap-2 group cursor-pointer">
-                 <p className="text-[10px] font-black uppercase tracking-widest text-white">View Lookbook</p>
+                 <p className="text-[10px] font-black uppercase tracking-widest text-white">                 Explore Styles</p>
                  <span className="w-8 h-px bg-white group-hover:w-12 transition-all"></span>
               </div>
             </div>
@@ -51,11 +50,11 @@ function Hero() {
 
         {/* RIGHT VISUAL AREA */}
         <div className="flex-1 relative min-h-[400px] md:min-h-full overflow-hidden bg-black/40">
-          {/* Using a high-quality placeholder that fits the dark/tech aesthetic */}
+          {/* Featured hoodie image */}
           <Image 
             className="object-cover object-center group-hover:scale-105 transition-transform duration-700" 
-            src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" 
-            alt="High performance streetwear" 
+            src="https://res.cloudinary.com/gszoamo1/image/upload/v1794858144/hoodie.png" 
+            alt="Ryvan premium hoodie"
             fill
             priority
           />
@@ -64,8 +63,8 @@ function Hero() {
           
           {/* Floating Badge */}
           <div className="absolute bottom-8 right-8 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-gray-200/30 dark:border-white/20">
-             <p className="text-[9px] font-black text-white uppercase tracking-tighter mb-1">New Drop</p>
-             <p className="text-xl font-bold text-white italic">001_v2</p>
+             <p className="text-[9px] font-black text-white uppercase tracking-tighter mb-1">New Season</p>
+             <p className="text-xl font-bold text-white italic">Look 001</p>
           </div>
         </div>
 

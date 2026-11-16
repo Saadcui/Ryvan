@@ -4,11 +4,13 @@ import ContactForm from './ContactForm';
 export const metadata = {
   title: 'Contact',
   description:
-    'Contact Ryvan for order support, product questions, shipping updates, and business inquiries in Pakistan and worldwide.',
+    'Contact Ryvan for clothing size advice, product questions, order support, shipping updates, and fashion inquiries in Pakistan and worldwide.',
   keywords: [
     'contact Ryvan',
     'streetwear customer support',
     'fashion support Pakistan',
+    'clothing size advice',
+    'online fashion store support',
     'order help Ryvan',
     'premium clothing contact',
   ],
@@ -18,7 +20,7 @@ export const metadata = {
   openGraph: {
     title: 'Contact | Ryvan',
     description:
-      'Reach out to Ryvan for product advice, order support, shipping questions, and collaboration inquiries.',
+      'Reach out to Ryvan for clothing advice, order support, shipping questions, and fashion collaboration inquiries.',
     url: '/contact',
   },
 };
@@ -52,7 +54,7 @@ export default function ContactPage() {
               Let’s <span className="text-gray-500 dark:text-gray-400 not-italic">talk</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-              Whether you need help with an order, want product advice, or are exploring a collaboration, Ryvan is easy to reach. We keep support simple, fast, and human.
+              Whether you need help choosing a size, want styling advice, or need an order update, Ryvan is easy to reach. We keep fashion support simple, fast, and human.
             </p>
           </div>
         </div>
@@ -70,7 +72,7 @@ export default function ContactPage() {
               </h2>
               <div className="space-y-5 text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                 <p>
-                  We support customers across Pakistan and respond to inquiries about sizing, delivery, stock, and product details as quickly as possible.
+                  We support customers across Pakistan with practical guidance on sizing, fit, delivery, stock, and product details.
                 </p>
                 <p>
                   For the fastest reply, include your order number, product name, and a short summary of the issue. That helps us resolve requests without unnecessary back-and-forth.
@@ -117,10 +119,10 @@ export default function ContactPage() {
 
             <div className="rounded-[36px] border border-gray-200/30 dark:border-white/10 bg-gradient-to-br from-black/[0.03] to-blue-500/5 p-8 md:p-10">
               <h2 className="text-2xl font-black italic uppercase tracking-tight mb-4">
-                Accerate Story
+                Ryvan Story
               </h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Ryvan provides premium streetwear customer support for shoppers looking for fit advice, stock availability, delivery information, and product recommendations. If you are browsing premium clothing in Pakistan or need help with an existing order, our contact page is the fastest way to reach us.
+                Ryvan helps shoppers find premium streetwear, clothing, and footwear with confidence. If you are browsing fashion in Pakistan or need help with sizing, stock, delivery, or an existing order, our support team is here to help.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
                 <Link href="/collection" className="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[11px] hover:bg-gray-200 transition-colors">

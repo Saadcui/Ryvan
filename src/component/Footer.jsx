@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="text-2xl font-black uppercase tracking-tighter text-black dark:text-white">Ryvan</h4>
             <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
-              Precision crafted apparel for those moving at the speed of tomorrow. Excellence in every stitch.
+              Premium clothing and footwear for modern wardrobes. Thoughtful style, quality fabrics, and confidence in every stitch.
             </p>
           </div>
 
@@ -25,8 +25,8 @@ export default function Footer() {
             <ul className="text-sm text-gray-700 dark:text-gray-400 space-y-3">
               <li><Link href="/collection" className="hover:text-black dark:hover:text-white transition-colors">Latest Drops</Link></li>
               <li><Link href="/collection" className="hover:text-black dark:hover:text-white transition-colors">Menswear</Link></li>
-              <li><Link href="/collection" className="hover:text-black dark:hover:text-white transition-colors">Performance</Link></li>
-              <li><Link href="/collection" className="hover:text-black dark:hover:text-white transition-colors">Limited Series</Link></li>
+              <li><Link href="/collection" className="hover:text-black dark:hover:text-white transition-colors">Everyday Essentials</Link></li>
+              <li><Link href="/collection" className="hover:text-black dark:hover:text-white transition-colors">Limited Pieces</Link></li>
             </ul>
           </div>
 
@@ -44,7 +44,7 @@ export default function Footer() {
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black dark:text-white mb-6">Stay Connected</h4>
             <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed mb-4">
-              Need help with orders, sizing, or delivery? Reach our team directly.
+              Need help with sizing, styling, orders, or delivery? Our team is ready to help.
             </p>
             <div className="flex gap-3">
               <Link

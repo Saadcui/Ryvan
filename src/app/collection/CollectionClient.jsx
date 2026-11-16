@@ -74,7 +74,7 @@ export default function CollectionClient({ initialProducts }) {
           <div className="mb-10 flex items-end justify-between border-b border-gray-200/30 dark:border-white/10 pb-6">
             <div>
               <h1 className="text-4xl font-bold text-black dark:text-white tracking-tight italic">New Arrivals</h1>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Curated selection for your lifestyle</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Curated fashion for your everyday wardrobe</p>
             </div>
             <span className="text-xs font-mono text-gray-400 bg-white/5 dark:bg-black/5 px-3 py-1 rounded-full border border-gray-200/30 dark:border-white/10">{filteredProducts.length} Items</span>
           </div>
@@ -86,7 +86,7 @@ export default function CollectionClient({ initialProducts }) {
 
             {filteredProducts.length === 0 && (
               <div className="col-span-full py-40 text-center">
-                <p className="text-gray-500 italic">No products match your current aesthetic.</p>
+                <p className="text-gray-500 italic">No products match your current filters. Try another fashion category.</p>
               </div>
             )}
           </div>

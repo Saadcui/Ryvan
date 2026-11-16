@@ -61,7 +61,7 @@ export default function CartPage() {
               Your <span className="text-gray-500 dark:text-gray-400 not-italic">Cart</span>
             </h1>
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
-              Ready for Deployment • {cartCount} Units
+              Your selected styles • {cartCount} Items
             </p>
           </div>
           
@@ -74,9 +74,9 @@ export default function CartPage() {
 
         {items.length === 0 ? (
                 <div className="mt-12 p-16 rounded-[40px] border border-gray-200/30 dark:border-white/10 bg-white/5 dark:bg-black/5 backdrop-blur-xl text-center">
-            <p className="text-xl font-bold italic text-gray-400 mb-6 uppercase">Your hangar is empty.</p>
+            <p className="text-xl font-bold italic text-gray-400 mb-6 uppercase">Your cart is waiting for new styles.</p>
             <Link href="/collection" className="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded-2xl hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-              Acquire Equipment
+              Browse Collection
             </Link>
           </div>
         ) : (

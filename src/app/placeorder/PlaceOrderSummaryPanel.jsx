@@ -53,13 +53,13 @@ export default function PlaceOrderSummaryPanel({
               <span className="font-bold">Rs {subtotal.toLocaleString()}</span>
             </div>
             <div className="flex justify-between text-gray-500">
-              <span className="text-[10px] font-black uppercase tracking-widest">Logistics (Shipping)</span>
+              <span className="text-[10px] font-black uppercase tracking-widest">Shipping</span>
               <span className={shippingCost === 0 ? 'text-emerald-400 font-black uppercase tracking-widest' : 'font-bold'}>
                 {shippingCost === 0 ? 'Free' : `Rs ${shippingCost.toLocaleString()}`}
               </span>
             </div>
             <div className="pt-4 mt-4 border-t border-white/10 flex justify-between items-end">
-              <span className="text-[11px] font-black uppercase tracking-[0.2em]">Total liability</span>
+              <span className="text-[11px] font-black uppercase tracking-[0.2em]">Order total</span>
               <div className="text-right">
                 <span className="text-[10px] text-gray-500 font-bold mr-2 uppercase">PKR</span>
                 <span className="text-3xl font-black italic tracking-tighter">Rs {total.toLocaleString()}</span>
@@ -80,7 +80,7 @@ export default function PlaceOrderSummaryPanel({
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
-                Processing Transmission...
+                Preparing Your Order...
               </span>
             ) : (
               'Finalize Order'
@@ -88,7 +88,7 @@ export default function PlaceOrderSummaryPanel({
           </button>
 
           <p className="text-[8px] text-gray-600 text-center uppercase tracking-[0.2em] mt-6 font-black">
-            Secure encrypted transmission protocol active
+            Secure checkout for your Ryvan order
           </p>
         </div>
       </div>

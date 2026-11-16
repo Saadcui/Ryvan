@@ -14,7 +14,7 @@ export const metadata = {
     template: '%s | Ryvan',
   },
   description:
-    'Shop premium clothing and footwear from Ryvan. New arrivals, curated streetwear aesthetic, and worldwide reach from Pakistan.',
+    'Shop premium clothing, streetwear, and footwear from Ryvan. Discover curated fashion online in Pakistan with delivery worldwide.',
   keywords: [
     'Ryvan',
     'streetwear',
@@ -23,6 +23,10 @@ export const metadata = {
     'fashion',
     'Pakistan',
     'online shopping Pakistan',
+    'online clothing store Pakistan',
+    'menswear Pakistan',
+    'womenswear Pakistan',
+    'unisex streetwear',
     'Karachi',
     'Lahore',
     'Islamabad',
@@ -36,20 +40,20 @@ export const metadata = {
     siteName: 'Ryvan',
     title: 'Ryvan — Premium Streetwear & Footwear in Pakistan',
     description:
-      'Shop premium clothing and footwear from Ryvan. Curated streetwear aesthetic with Pakistan and global customers in mind.',
+      'Shop premium clothing, streetwear, and footwear from Ryvan. Curated fashion styles for customers in Pakistan and worldwide.',
     url: '/',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ryvan — Premium Streetwear & Footwear in Pakistan',
     description:
-      'Shop premium clothing and footwear from Ryvan. Curated streetwear aesthetic with Pakistan and global customers in mind.',
+      'Shop premium clothing, streetwear, and footwear from Ryvan. Curated fashion styles for customers in Pakistan and worldwide.',
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body>
         <ToastProvider>
           <AuthProvider>

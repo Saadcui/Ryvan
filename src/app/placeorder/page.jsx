@@ -150,10 +150,10 @@ export default function PlaceOrderPage() {
         {/* Header */}
         <div className="mb-12 border-b border-gray-200/30 dark:border-white/10 pb-8">
             <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter">
-              Checkout <span className="text-gray-500 dark:text-gray-400 not-italic">Sequence</span>
+              Checkout <span className="text-gray-500 dark:text-gray-400 not-italic">Details</span>
             </h1>
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
-              Transmission Encrypted • {cartCount} Items in Cargo
+              Secure Checkout • {cartCount} Items
             </p>
         </div>
 
@@ -198,7 +198,7 @@ export default function PlaceOrderPage() {
             <section className="space-y-6">
               <div className="flex items-center gap-4">
                 <span className="text-emerald-400 font-black italic text-xl">02</span>
-                <h2 className="text-xl font-black uppercase italic tracking-wider">Delivery Logistics</h2>
+                <h2 className="text-xl font-black uppercase italic tracking-wider">Delivery Details</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="md:col-span-2 space-y-2">
@@ -293,11 +293,11 @@ export default function PlaceOrderPage() {
                   <div className="flex justify-between items-center gap-4">
                     <div>
                       <p className="text-xs font-black uppercase tracking-widest">
-                        {shippingMethod === 'Free' ? 'Free delivery automatically applied' : 'Flat shipping applied'}
+                        {shippingMethod === 'Free' ? 'Free delivery applied' : 'Standard shipping applied'}
                       </p>
                       <p className="text-[10px] text-gray-400 mt-1 uppercase font-bold">
                         {shippingMethod === 'Free'
-                          ? 'Orders above Rs 2,000 get free shipping.'
+                          ? 'Orders above Rs 2,000 qualify for free shipping.'
                           : 'Orders below Rs 2,000 include a Rs 200 shipping charge.'}
                       </p>
                     </div>
@@ -313,14 +313,14 @@ export default function PlaceOrderPage() {
              <section className="space-y-6">
               <div className="flex items-center gap-4">
                 <span className="text-emerald-400 font-black italic text-xl">04</span>
-                <h2 className="text-xl font-black uppercase italic tracking-wider">Payment Protocol</h2>
+                <h2 className="text-xl font-black uppercase italic tracking-wider">Payment Method</h2>
               </div>
               <div className="p-6 rounded-2xl border border-emerald-500 bg-emerald-500/5">
                 <div className="flex items-center gap-4">
                   <div className="w-5 h-5 rounded-full border-4 border-emerald-500" />
                   <div>
                     <p className="text-xs font-black uppercase tracking-widest">Cash on Delivery (COD)</p>
-                    <p className="text-[10px] text-gray-400 mt-1 uppercase font-bold text-wrap">Settle the invoice upon physical arrival of cargo.</p>
+                    <p className="text-[10px] text-gray-400 mt-1 uppercase font-bold text-wrap">Pay for your fashion order when it arrives.</p>
                   </div>
                 </div>
               </div>

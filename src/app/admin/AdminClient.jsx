@@ -216,7 +216,7 @@ export default function AdminClient() {
                   Admin <span className="text-gray-600 dark:text-gray-400 not-italic">Panel</span>
                 </h1>
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
-                    Inventory Management System
+                    Product and Collection Management
                 </p>
             </div>
             <div className="hidden sm:flex items-center gap-4 text-right">
@@ -224,8 +224,8 @@ export default function AdminClient() {
                   Manage Orders
                 </Link>
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Total Assets</p>
-                  <p className="text-2xl font-black italic">{products.length} Units</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-500">Total Products</p>
+                  <p className="text-2xl font-black italic">{products.length} Products</p>
                 </div>
             </div>
         </div>
@@ -244,8 +244,8 @@ export default function AdminClient() {
           <section className="xl:col-span-4 h-fit">
             <div className="bg-white/5 dark:bg-black/5 backdrop-blur-xl rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden sticky top-24 shadow-2xl">
               <div className="p-8 border-b border-gray-200/30 dark:border-white/10">
-                <h2 className="text-lg font-black uppercase tracking-widest italic">Deploy New Item</h2>
-                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Add equipment to the arsenal</p>
+                <h2 className="text-lg font-black uppercase tracking-widest italic">Add New Product</h2>
+                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Add clothing or accessories to the collection</p>
               </div>
 
               <form onSubmit={onCreate} className="p-8 space-y-6">
@@ -423,14 +423,14 @@ export default function AdminClient() {
             <div className="bg-white/5 dark:bg-black/5 backdrop-blur-xl rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden min-h-[600px] flex flex-col shadow-2xl">
               <div className="p-8 border-b border-gray-200/30 dark:border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                  <h2 className="text-lg font-black uppercase tracking-widest italic">Inventory Matrix</h2>
-                  <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Global Stock Overview</p>
+                  <h2 className="text-lg font-black uppercase tracking-widest italic">Product Inventory</h2>
+                  <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Collection stock overview</p>
                 </div>
 
                 {/* Per-size stock controls when sizes selected */}
                 {selectedSizes.length > 0 && (
                   <div className="p-4 bg-white/5 dark:bg-black/40 rounded-2xl border border-gray-200/30 dark:border-white/5">
-                    <div className="text-[9px] text-emerald-400 font-black uppercase tracking-widest mb-3">Stock Allocation Per Size</div>
+                    <div className="text-[9px] text-emerald-400 font-black uppercase tracking-widest mb-3">Stock by Size</div>
                     <div className="flex flex-wrap gap-2">
                       {selectedSizes.map((s) => (
                         <div key={s} className="flex items-center gap-2 bg-white/5 dark:bg-black/5 px-2 py-1 rounded-lg border border-gray-200/30 dark:border-white/10">
@@ -452,11 +452,11 @@ export default function AdminClient() {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-white/5 dark:bg-black/5 text-gray-500 dark:text-gray-400 text-[9px] uppercase font-black tracking-[0.2em] border-b border-gray-200/30 dark:border-white/10">
-                      <th className="px-6 py-5 pl-8">Asset</th>
+                      <th className="px-6 py-5 pl-8">Product</th>
                       <th className="px-6 py-5">Gender</th>
-                      <th className="px-6 py-5">Class</th>
-                      <th className="px-6 py-5">Units</th>
-                      <th className="px-6 py-5">Specs</th>
+                      <th className="px-6 py-5">Category</th>
+                      <th className="px-6 py-5">Stock</th>
+                      <th className="px-6 py-5">Sizes</th>
                       <th className="px-6 py-5">Value</th>
                       <th className="px-6 py-5 text-right pr-8">Actions</th>
                     </tr>
@@ -475,7 +475,7 @@ export default function AdminClient() {
                         <td colSpan="7" className="px-6 py-32 text-center text-gray-600">
                           <div className="flex flex-col items-center gap-4">
                             <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-2xl grayscale">📦</div>
-                            <span className="text-[10px] font-black uppercase tracking-widest">System Empty. Initialize Data.</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest">No products added yet.</span>
                           </div>
                         </td>
                       </tr>

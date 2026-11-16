@@ -5,7 +5,7 @@ import RecentBanner from "../component/RecentBanner";
 export const metadata = {
     title: 'Premium Streetwear & Footwear in Pakistan',
     description:
-        'Discover Ryvan: premium streetwear, clothing, and footwear curated for everyday wear. Shop from Pakistan with a global audience in mind.',
+        'Discover Ryvan: premium streetwear, clothing, and footwear curated for everyday style. Shop quality fashion online in Pakistan.',
     alternates: {
         canonical: '/',
     },
@@ -32,13 +32,12 @@ export default function Home() {
                         The Vision
                     </p>
                     <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none mb-8">
-                        Acc<span className="text-gray-600">elerate</span>
+                        Ryv<span className="text-gray-600">an</span>
                     </h2>
                     <p className="text-gray-400 text-lg leading-relaxed font-medium">
-                        Ryvan is not just a clothing brand. It bring together premium garments and
-                        footwear chosen for their design integrity, material quality, and versatility.
-                        Every product is selected to meet a higher standard pieces that move effortlessly between street, 
-                        lifestyle, and everyday wear.
+                        Ryvan is a premium clothing and footwear brand built for confident everyday style.
+                        We bring together quality fabrics, considered fits, and versatile designs for modern wardrobes.
+                        Every piece is selected to move effortlessly from the street to social plans and daily wear.
                     </p>
                 </div>
 
@@ -53,7 +52,7 @@ export default function Home() {
                             STREET AESTHETIC
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            A refined selection of jackets, trousers, and essentials designed for today’s urban lifestyle. Refined silhouettes for the modern pioneer.
+                            A refined selection of jackets, trousers, and everyday essentials designed for modern urban wardrobes.
                         </p>
                     </div>
 
@@ -66,7 +65,7 @@ export default function Home() {
                             Premium Build
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            Every product on Ryvan is hand-selected for fabric weight, fit, and finish—ensuring a premium look and feel across every category.
+                            Every Ryvan product is hand-selected for fabric quality, comfortable fit, and a polished finish across every category.
                         </p>
                     </div>
 
@@ -79,7 +78,7 @@ export default function Home() {
                             Built for Wear
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                        Comfort, durability, and versatility come first. We select pieces that are meant to be worn daily, not just displayed.
+                        Comfort, durability, and versatility come first. Our clothing is made to be styled and worn regularly, not just displayed.
                         </p>
                     </div>
                 </div>
@@ -98,7 +97,7 @@ export default function Home() {
                         </div>
                          <div>
                             <h4 className="text-2xl font-black italic text-black dark:text-white">24/7</h4>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">Support Checked</p>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">Customer Support</p>
                          </div>
                         <div>
                             <h4 className="text-2xl font-black italic text-black dark:text-white">Secure</h4>
@@ -107,7 +106,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* 4. THE ACCELERATE STANDARD (Curation Process) */}
+                {/* 4. THE RYVAN STANDARD (Curation Process) */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                     <div>
                         <p className="text-xs font-bold uppercase tracking-[0.4em] text-emerald-400 mb-4">
@@ -145,14 +144,14 @@ export default function Home() {
                             <h3 className="text-3xl font-black italic uppercase mb-4">Quality <br/> Assurance</h3>
                             <p className="text-gray-400 text-sm leading-relaxed mb-10">
                                 Before any piece reaches your hands, it undergoes a final manual inspection at our 
-                                distribution center. Ryvan is your destination for elevated clothing—curated
-                                to move with you.
+                                distribution center. Ryvan is your destination for elevated clothing and footwear,
+                                curated to bring comfort and confidence to every outfit.
                             </p>
                             
                             <div className="space-y-2">
                                 <div className="flex justify-between text-[10px] uppercase font-black tracking-[0.2em]">
-                                    <span className="text-gray-500">Inventory Status</span>
-                                    <span className="text-emerald-400">Verified & Ready</span>
+                                    <span className="text-gray-500">Collection Status</span>
+                                    <span className="text-emerald-400">Curated & Ready</span>
                                 </div>
                                 <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
                                     <div className="h-full w-full bg-gradient-to-r from-emerald-600 to-emerald-400" />

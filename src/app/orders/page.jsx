@@ -48,7 +48,7 @@ export default function UserOrdersPage() {
               Order <span className="text-gray-500 dark:text-gray-400 not-italic">Archive</span>
             </h1>
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mt-2">
-              History of Acquisitions • {orders.length} Transmissions
+              Your purchase history • {orders.length} Orders
             </p>
         </div>
 
@@ -64,9 +64,9 @@ export default function UserOrdersPage() {
            </div>
         ) : orders.length === 0 ? (
           <div className="text-center py-24 border border-dashed border-white/10 rounded-3xl">
-             <p className="text-gray-500 font-black uppercase text-xs tracking-widest">No orders found in your hangar.</p>
+             <p className="text-gray-500 font-black uppercase text-xs tracking-widest">No orders found yet.</p>
              <button onClick={() => router.push('/collection')} className="mt-8 px-6 py-3 bg-white text-black font-black uppercase tracking-widest rounded-xl hover:bg-emerald-400 transition-all">
-               Start Mission
+               Shop the Collection
              </button>
           </div>
         ) : (

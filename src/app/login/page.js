@@ -49,10 +49,10 @@ export default function Login() {
 
           <div className='mt-6 md:mt-0'>
             <h1 className='text-4xl md:text-5xl font-bold leading-tight mb-4'>
-              Move Fast. <br /> Dress Bold.
+              Find Your Fit. <br /> Dress With Confidence.
             </h1>
             <p className='text-gray-300 text-sm md:text-base leading-relaxed max-w-sm'>
-              Ryvan isn’t just clothing—it’s a lifestyle. Designed for those who chase adventure, embrace individuality, and never settle for ordinary.
+              Discover premium streetwear, clothing, and footwear designed for everyday confidence. Find quality pieces that make personal style feel effortless.
             </p>
           </div>
 
@@ -98,7 +98,7 @@ export default function Login() {
           </form>
 
           <div className='text-center mt-6 text-gray-400 text-xs'>
-            Dont have an account? <Link href="/signup" className='text-gray-200 underline hover:text-gray-950'>Sign Up Here</Link>
+            New to Ryvan? <Link href="/signup" className='text-gray-200 underline hover:text-gray-950'>Create an Account</Link>
           </div>
 
         </div>

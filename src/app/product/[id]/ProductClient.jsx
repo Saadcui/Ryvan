@@ -59,7 +59,7 @@ export default function ProductClient({ product }) {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
-                <div className="flex items-center justify-center h-[420px]">No Image</div>
+                <div className="flex items-center justify-center h-[420px]">Product image unavailable</div>
               )}
 
               <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 dark:bg-black/40 hover:bg-white/20 backdrop-blur-md p-3 rounded-full transition-all">
@@ -87,7 +87,7 @@ export default function ProductClient({ product }) {
 
           <div className="flex flex-col">
             <h1 className="text-4xl md:text-5xl font-bold mb-2 tracking-tight text-black dark:text-white">{product.name}</h1>
-            <p className="text-green-600 dark:text-green-400 font-medium mb-6">{product.Gender} Collection</p>
+            <p className="text-green-600 dark:text-green-400 font-medium mb-6">{product.Gender} Fashion Collection</p>
 
             <div className="text-4xl font-light mb-8 text-black dark:text-white">Rs {Number(product.price || 0).toFixed(2)}</div>
 
@@ -128,7 +128,7 @@ export default function ProductClient({ product }) {
               </div>
               <div className="bg-white/5 dark:bg-black/5 p-4 rounded-2xl border border-gray-200/30 dark:border-white/10">
                 <label className="text-[10px] uppercase text-gray-500 font-bold block mb-1">Availability</label>
-                <span className="text-xl font-bold">{sizeAvailable} <span className="text-sm font-normal text-gray-400">in stock</span></span>
+                <span className="text-xl font-bold">{sizeAvailable}                 <span className="text-sm font-normal text-gray-400">available</span></span>
               </div>
             </div>
 
