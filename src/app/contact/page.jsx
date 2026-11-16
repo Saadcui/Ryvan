@@ -83,8 +83,8 @@ export default function ContactPage() {
             <div className="grid gap-4">
               <div className="rounded-[28px] border border-gray-200/30 dark:border-white/10 bg-white/5 dark:bg-black/5 p-6">
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-2">Email</p>
-                <a href="mailto:support@accelerategrw@gmail.com" className="text-lg font-bold hover:text-emerald-400 transition-colors">
-                  support@accelerategrw@gmail.com
+                <a href="mailto:support@ryvan@gmail.com" className="text-lg font-bold hover:text-emerald-400 transition-colors">
+                  support@ryvan@gmail.com
                 </a>
               </div>
               <div className="rounded-[28px] border border-gray-200/30 dark:border-white/10 bg-white/5 dark:bg-black/5 p-6">

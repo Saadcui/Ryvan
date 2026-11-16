@@ -1,5 +1,6 @@
 // app/layout.js
 import './globals.css';
+import logo from '../assets/logo.png';
 
 import Navbar from '../component/Navbar';
 import Footer from '../component/Footer';
@@ -34,6 +35,10 @@ export const metadata = {
   ],
   alternates: {
     canonical: '/',
+  },
+  icons: {
+    icon: logo.src,
+    shortcut: logo.src,
   },
   openGraph: {
     type: 'website',
