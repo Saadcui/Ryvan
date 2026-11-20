@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { adminOnly } from '@/middleware/admin';
 import { uploadImageBuffer } from '@/lib/cloudinary';
 
-const MAX_FILE_SIZE = 2 * 1024 * 1024;
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 export async function POST(request) {
   try {
@@ -28,7 +28,7 @@ export async function POST(request) {
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json({ success: false, error: 'Image must be 2MB or smaller.' }, { status: 400 });
+      return NextResponse.json({ success: false, error: 'Image must be 5MB or smaller.' }, { status: 400 });
     }
 
     const arrayBuffer = await file.arrayBuffer();

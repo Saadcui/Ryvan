@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 
 // --- CONFIGURATION: Size Categories ---
 const SIZE_CONFIG = {
@@ -91,7 +91,7 @@ export default function AdminClient() {
 
     const oversized = files.find((file) => file.size > MAX_IMAGE_SIZE);
     if (oversized) {
-      setError(`Image "${oversized.name}" exceeds 2MB.`);
+      setError(`Image "${oversized.name}" exceeds 5MB.`);
       setSelectedFiles([]);
       return;
     }
@@ -261,8 +261,8 @@ export default function AdminClient() {
                     Product and Collection Management
                 </p>
             </div>
-            <div className="hidden sm:flex items-center gap-4 text-right">
-                <Link href="/admin/orders" className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-right">
+                <Link href="/admin/orders" className="px-3 py-2 bg-emerald-400 text-black border-0 rounded-lg text-[10px] font-black uppercase tracking-wider hover:bg-emerald-300 transition-all">
                   Manage Orders
                 </Link>
                 <div>
@@ -410,7 +410,7 @@ export default function AdminClient() {
                     onChange={onSelectImages}
                     className="w-full bg-white/5 dark:bg-black/50 border border-gray-200/30 dark:border-white/10 rounded-xl px-4 py-3 text-[10px] text-gray-700 dark:text-gray-300 outline-none focus:border-emerald-500 transition-all file:bg-emerald-400 file:text-black file:border-0 file:rounded-lg file:px-3 file:py-2 file:mr-3 file:font-black file:uppercase file:tracking-wider"
                   />
-                  <p className="text-[9px] text-gray-600 text-right uppercase tracking-wider font-bold">Images only, max 2MB each</p>
+                  <p className="text-[9px] text-gray-600 text-right uppercase tracking-wider font-bold">Images only, max 5MB each</p>
 
                   {selectedFiles.length > 0 && (
                     <div className="space-y-2">
