@@ -21,6 +21,7 @@ export default function AdminClient() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [editingProductId, setEditingProductId] = useState(null);
 
   // Form Fields
   const [name, setName] = useState('');
@@ -168,32 +169,73 @@ export default function AdminClient() {
     };
 
     try {
-      const res = await fetch('/api/products', {
-        method: 'POST',
+      const res = await fetch(editingProductId ? `/api/products/${editingProductId}` : '/api/products', {
+        method: editingProductId ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
-        if (res.ok) {
+      if (res.ok) {
         // Reset Form
         setName(''); setDescription(''); setPrice(''); setCategory('');
         setGender(''); setSelectedFiles([]); setUploadedImages([]); setSelectedSizes([]);
-          setSizesStock({});
+        setSizesStock({});
+        setEditingProductId(null);
         fetchProducts();
       } else {
         const errData = await res.json();
-        setError(errData.error || "Save failed.");
+        setError(errData.error || (editingProductId ? 'Update failed.' : 'Save failed.'));
       }
     } catch (err) { setError("Network error."); }
     finally { setSaving(false); }
   };
 
+  const onEdit = (product) => {
+    setEditingProductId(product._id);
+    setName(product.name || '');
+    setDescription(product.description || '');
+    setPrice(String(product.price ?? ''));
+    setCategory(product.category || '');
+    setGender(product.Gender || '');
+    const productSizes = Array.isArray(product.sizes) ? product.sizes : [];
+    setSelectedSizes(productSizes.map((size) => typeof size === 'string' ? size : size.size));
+    setSizesStock(Object.fromEntries(productSizes.map((size) => {
+      const sizeName = typeof size === 'string' ? size : size.size;
+      return [sizeName, typeof size === 'string' ? 0 : Number(size.stock || 0)];
+    })));
+    setUploadedImages((product.images || []).map((image) => ({
+      url: image.url,
+      name: 'Existing image',
+    })));
+    setSelectedFiles([]);
+    setError('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const cancelEdit = () => {
+    setEditingProductId(null);
+    setName('');
+    setDescription('');
+    setPrice('');
+    setCategory('');
+    setGender('');
+    setSelectedSizes([]);
+    setSizesStock({});
+    setUploadedImages([]);
+    setSelectedFiles([]);
+    setError('');
+  };
+
   const onDelete = async (id) => {
     if (!confirm("Delete this product?")) return;
     try {
-      await fetch(`/api/products/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/products/${id}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Delete failed.');
+      }
       setProducts(products.filter(p => p._id !== id));
-    } catch (err) { setError("Delete failed."); }
+    } catch (err) { setError(err.message || "Delete failed."); }
   };
 
   // --- DYNAMIC UI HELPERS ---
@@ -244,8 +286,12 @@ export default function AdminClient() {
           <section className="xl:col-span-4 h-fit">
             <div className="bg-white/5 dark:bg-black/5 backdrop-blur-xl rounded-[32px] border border-gray-200/30 dark:border-white/10 overflow-hidden sticky top-24 shadow-2xl">
               <div className="p-8 border-b border-gray-200/30 dark:border-white/10">
-                <h2 className="text-lg font-black uppercase tracking-widest italic">Add New Product</h2>
-                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">Add clothing or accessories to the collection</p>
+                <h2 className="text-lg font-black uppercase tracking-widest italic">
+                  {editingProductId ? 'Edit Product' : 'Add New Product'}
+                </h2>
+                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">
+                  {editingProductId ? 'Update product details and inventory' : 'Add clothing or accessories to the collection'}
+                </p>
               </div>
 
               <form onSubmit={onCreate} className="p-8 space-y-6">
@@ -412,8 +458,17 @@ export default function AdminClient() {
                   disabled={saving} 
                   className="w-full py-5 bg-white text-black hover:bg-emerald-400 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(52,211,153,0.4)]"
                 >
-                  {saving ? 'Processing...' : 'Initialize Listing'}
+                  {saving ? 'Processing...' : editingProductId ? 'Update Listing' : 'Initialize Listing'}
                 </button>
+                {editingProductId && (
+                  <button
+                    type="button"
+                    onClick={cancelEdit}
+                    className="w-full py-3 border border-gray-200/30 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-black dark:hover:text-white transition-all"
+                  >
+                    Cancel Edit
+                  </button>
+                )}
               </form>
             </div>
           </section>
@@ -539,6 +594,9 @@ export default function AdminClient() {
                           <span className="text-xs font-bold text-black dark:text-white font-mono">Rs {p.price?.toFixed(2)}</span>
                         </td>
                         <td className="px-6 py-4 text-right pr-8">
+                          <button onClick={() => onEdit(p)} className="p-2 text-gray-600 hover:text-emerald-400 transition-all hover:bg-white/5 dark:hover:bg-black/5 rounded-lg" title="Edit Product">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.5-9.5a2.121 2.121 0 013 3L12 14l-4 1 1-4 8.5-8.5z" /></svg>
+                          </button>
                           <button onClick={() => onDelete(p._id)} className="p-2 text-gray-600 hover:text-red-500 transition-all hover:bg-white/5 dark:hover:bg-black/5 rounded-lg" title="Delete Asset">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                           </button>

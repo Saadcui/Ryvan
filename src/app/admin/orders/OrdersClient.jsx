@@ -101,7 +101,7 @@ export default function OrdersClient() {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-white/5 dark:bg-black/5 text-gray-500 dark:text-gray-400 text-[9px] uppercase font-black tracking-[0.2em] border-b border-gray-200/30 dark:border-white/10">
@@ -190,6 +190,63 @@ export default function OrdersClient() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="md:hidden p-4 space-y-4">
+            {loading ? (
+              [1, 2, 3].map((i) => (
+                <div key={i} className="h-36 rounded-2xl bg-white/5 animate-pulse" />
+              ))
+            ) : orders.length === 0 ? (
+              <div className="py-20 text-center text-gray-600 uppercase font-black tracking-widest text-xs">
+                No orders found
+              </div>
+            ) : orders.map((o) => (
+              <article
+                key={o._id}
+                className="rounded-2xl border border-gray-200/20 dark:border-white/10 bg-white/5 dark:bg-black/10 p-4 space-y-4"
+                onClick={() => setSelectedOrder(o)}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-mono font-bold text-gray-400">
+                      #{o._id.slice(-6).toUpperCase()}
+                    </p>
+                    <p className="text-[9px] text-gray-600 mt-1 uppercase font-bold">
+                      {new Date(o.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <span className="text-xs font-bold font-mono">Rs {o.total.toLocaleString()}</span>
+                </div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide">{o.firstName} {o.lastName}</p>
+                  <p className="text-[10px] text-gray-500 mt-1">{o.city}, {o.country || 'PK'}</p>
+                </div>
+                <div className="flex items-center justify-between gap-3" onClick={(e) => e.stopPropagation()}>
+                  <select
+                    value={o.status}
+                    onChange={(e) => handleUpdateStatus(o._id, e.target.value)}
+                    className={`min-w-0 flex-1 text-[9px] font-black uppercase tracking-widest px-3 py-2 rounded-lg border outline-none ${
+                      o.status === 'Delivered' ? 'border-emerald-500/50 text-emerald-400 bg-emerald-500/10' :
+                      o.status === 'Cancelled' ? 'border-red-500/50 text-red-500 bg-red-500/10' :
+                      'border-yellow-500/50 text-yellow-500 bg-yellow-500/10'
+                    }`}
+                  >
+                    <option value="Processing">Processing</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                  </select>
+                  <button
+                    onClick={() => handleClearOrder(o._id)}
+                    className="p-2 text-gray-600 hover:text-red-500 rounded-lg"
+                    title="Clear Order"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a1.995 1.995 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4v3M4 7h16" /></svg>
+                  </button>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
 

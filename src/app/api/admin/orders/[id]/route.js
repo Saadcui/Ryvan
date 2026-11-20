@@ -5,7 +5,7 @@ import Product from '@/models/products';
 import { verifyToken } from '@/lib/jwt';
 import { cookies } from 'next/headers';
 
-// --- Helper: Restore stock for all items in an order ---
+// --- Helpers for returning and reserving stock for an order ---
 async function restoreInventory(order) {
   for (const item of order.items) {
     if (item.productId) {
@@ -15,6 +15,35 @@ async function restoreInventory(order) {
       );
     }
   }
+}
+
+async function reserveInventory(order) {
+  const reservedItems = [];
+
+  for (const item of order.items) {
+    const reservedProduct = await Product.findOneAndUpdate(
+      {
+        _id: item.productId,
+        sizes: {
+          $elemMatch: {
+            size: item.size,
+            stock: { $gte: item.qty },
+          },
+        },
+      },
+      { $inc: { 'sizes.$.stock': -item.qty } },
+      { new: true }
+    );
+
+    if (!reservedProduct) {
+      await restoreInventory({ items: reservedItems });
+      return false;
+    }
+
+    reservedItems.push(item);
+  }
+
+  return true;
 }
 
 // --- ADMIN: Delete an order and restore its stock ---
@@ -34,8 +63,10 @@ export async function DELETE(req, { params }) {
 
     if (!order) return NextResponse.json({ success: false, error: 'Order not found' }, { status: 404 });
 
-    // Restore inventory before deleting
-    await restoreInventory(order);
+    // Restore only if this order has not already returned its inventory.
+    if (order.status !== 'Cancelled') {
+      await restoreInventory(order);
+    }
 
     await Order.findByIdAndDelete(id);
 
@@ -51,6 +82,11 @@ export async function PATCH(req, { params }) {
     const { id } = await params;
     const body = await req.json();
     const { status } = body;
+    const validStatuses = ['Processing', 'Shipped', 'Delivered', 'Cancelled'];
+
+    if (!validStatuses.includes(status)) {
+      return NextResponse.json({ success: false, error: 'Invalid order status' }, { status: 400 });
+    }
 
     const cookieStore = await cookies();
     const token = cookieStore.get('token')?.value;
@@ -65,9 +101,21 @@ export async function PATCH(req, { params }) {
 
     if (!order) return NextResponse.json({ success: false, error: 'Order not found' }, { status: 404 });
 
-    // If cancelling, restore inventory (only if not already cancelled)
-    if (status === 'Cancelled' && order.status !== 'Cancelled') {
+    const wasCancelled = order.status === 'Cancelled';
+    const isBeingCancelled = status === 'Cancelled' && !wasCancelled;
+    const isBeingReopened = status !== 'Cancelled' && wasCancelled;
+
+    // Return stock once when an active order is cancelled.
+    if (isBeingCancelled) {
       await restoreInventory(order);
+    }
+
+    // Reserve stock again when a cancelled order is moved back to an active status.
+    if (isBeingReopened && !(await reserveInventory(order))) {
+      return NextResponse.json(
+        { success: false, error: 'Insufficient stock to reopen this order.' },
+        { status: 400 }
+      );
     }
 
     const updatedOrder = await Order.findByIdAndUpdate(id, { status }, { new: true });

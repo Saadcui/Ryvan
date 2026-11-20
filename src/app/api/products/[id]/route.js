@@ -28,7 +28,7 @@ export async function DELETE(request, { params }) {
     if (admin && typeof admin.status === 'number') return admin;
 
     await db();
-    const { id } = params;
+    const { id } = await params;
     const deletedProduct = await Product.findByIdAndDelete(id);
     if (!deletedProduct) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
@@ -46,7 +46,7 @@ export async function PUT(request, { params }) {
     if (admin && typeof admin.status === 'number') return admin;
 
     await db();
-    const { id } = params;
+    const { id } = await params;
     const data = await request.json();
     const normalizedData = { ...data };
     if (normalizedData.sizes && Array.isArray(normalizedData.sizes)) {
